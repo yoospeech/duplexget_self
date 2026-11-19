@@ -15,6 +15,8 @@ WHISPER_MODEL="medium"
 DEVICE="auto"
 CHANNELS="assistant"
 CHUNK_SEC="100"
+LOWRATE_METHOD="reject"
+SIDON_DEVICE="cuda:0"
 DOWNLOAD_ONLY=0
 PREP_ONLY=0
 ANNOTATE_ONLY=0
@@ -45,6 +47,8 @@ Options:
                           assistant: channel 0 to clip.json (upstream style);
                           both: channel 1 additionally to clip.user.json sidecar
   --chunk-sec SEC          Segment length (default 100)
+  --lowrate-method MODE    reject (default), resample, sidon
+  --sidon-device DEVICE    CUDA device for Sidon (default cuda:0)
   --inspect-only           Download if requested, then inspect; no training prep
   --approval-manifest PATH Human-reviewed stereo allowlist (default reports/approved_stereo.jsonl)
   --download-only          Only download
@@ -71,6 +75,8 @@ while (($#)); do
     --device) DEVICE="$2"; shift 2;;
     --channels) CHANNELS="$2"; shift 2;;
     --chunk-sec) CHUNK_SEC="$2"; shift 2;;
+    --lowrate-method) LOWRATE_METHOD="$2"; shift 2;;
+    --sidon-device) SIDON_DEVICE="$2"; shift 2;;
     --inspect-only) INSPECT_ONLY=1; shift;;
     --approval-manifest) APPROVAL="$2"; shift 2;;
     --download-only) DOWNLOAD_ONLY=1; shift;;
@@ -87,6 +93,9 @@ done
 if (( DOWNLOAD_ONLY + PREP_ONLY + ANNOTATE_ONLY + INSPECT_ONLY > 1 )); then
   echo "Only one --download-only / --prep-only / --annotate-only is allowed" >&2
   exit 2
+fi
+if [[ "$LOWRATE_METHOD" != reject && "$LOWRATE_METHOD" != resample && "$LOWRATE_METHOD" != sidon ]]; then
+  echo "--lowrate-method must be reject, resample, or sidon" >&2; exit 2
 fi
 if [[ "$CHANNELS" != assistant && "$CHANNELS" != both ]]; then
   echo "--channels must be assistant or both" >&2; exit 2
@@ -135,7 +144,8 @@ if (( ! ANNOTATE_ONLY )); then
     exit 2
   fi
   echo "[3/4] 24 kHz stereo Moshi preparation (approved files only)"
-  pargs=(--input "$input_dir" --out "$OUT" --chunk-sec "$CHUNK_SEC" --approved-manifest "$APPROVAL")
+  pargs=(--input "$input_dir" --out "$OUT" --chunk-sec "$CHUNK_SEC" --approved-manifest "$APPROVAL"
+         --lowrate-method "$LOWRATE_METHOD" --sidon-device "$SIDON_DEVICE")
   "$PYTHON" src/prepare_moshi.py "${pargs[@]}"
 fi
 manifest="$OUT/train.jsonl"
