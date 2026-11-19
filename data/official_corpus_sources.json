@@ -1,0 +1,176 @@
+{
+  "metadata": {
+    "note": "Official landing pages, not verified downloadable audio URLs; mirrors may duplicate other rows",
+    "count": 14
+  },
+  "datasets": [
+    {
+      "name": "AMI Meeting Corpus",
+      "source": "official",
+      "url": "https://groups.inf.ed.ac.uk/ami/corpus/",
+      "lang": "en",
+      "license": "cc-by-4.0",
+      "notes": "meeting recordings, official download chooser",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR16 AMI",
+      "source": "openslr",
+      "url": "https://www.openslr.org/16/",
+      "lang": "en",
+      "license": "CC BY-NC-SA 2.0 modified (see distribution)",
+      "notes": "AMI mirror; same corpus as official AMI; review license discrepancy",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR111 AISHELL-4",
+      "source": "openslr",
+      "url": "https://www.openslr.org/111/",
+      "lang": "zh",
+      "license": null,
+      "notes": "Mandarin multichannel meetings",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR119 AliMeeting",
+      "source": "openslr",
+      "url": "https://www.openslr.org/119/",
+      "lang": "zh",
+      "license": null,
+      "notes": "Mandarin multichannel meetings",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR123 MAGICDATA Conversation",
+      "source": "openslr",
+      "url": "https://www.openslr.org/123/",
+      "lang": "zh",
+      "license": null,
+      "notes": "Mandarin spontaneous conversational speech",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR6 Vystadial",
+      "source": "openslr",
+      "url": "https://www.openslr.org/6/",
+      "lang": "en,cs",
+      "license": null,
+      "notes": "English/Czech spoken dialogue",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR113 Seoul Corpus",
+      "source": "openslr",
+      "url": "https://www.openslr.org/113/",
+      "lang": "ko",
+      "license": null,
+      "notes": "Spontaneous Korean speech, not necessarily two-party dialogue",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR135 Libri-Mixed-Speakers",
+      "source": "openslr",
+      "url": "https://www.openslr.org/135/",
+      "lang": "en",
+      "license": null,
+      "notes": "Synthetic overlapping speakers, not natural dialogue",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "VoxConverse",
+      "source": "official",
+      "url": "https://mm.kaist.ac.kr/datasets/voxconverse/",
+      "lang": "en",
+      "license": null,
+      "notes": "Diarization from videos, check download availability",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "Mozilla Common Voice",
+      "source": "official",
+      "url": "https://commonvoice.mozilla.org/en/datasets",
+      "lang": "multilingual",
+      "license": null,
+      "notes": "Mostly single-speaker read speech, not natural dialogue",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "AMI download selector",
+      "source": "official",
+      "url": "https://groups.inf.ed.ac.uk/ami/download/",
+      "lang": "en",
+      "license": "cc-by-4.0",
+      "notes": "Same AMI corpus as first entry; source/mirror duplicate",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR108 MediaSpeech",
+      "source": "openslr",
+      "url": "https://www.openslr.org/108/",
+      "lang": "fr,ar,tr,es",
+      "license": null,
+      "notes": "Media speech, not necessarily dialogue",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR94 Multilingual LibriSpeech",
+      "source": "openslr",
+      "url": "https://www.openslr.org/94/",
+      "lang": "multilingual",
+      "license": null,
+      "notes": "Read speech auxiliary pretraining, not dialogue",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    },
+    {
+      "name": "OpenSLR SLR25 ALFFA",
+      "source": "openslr",
+      "url": "https://www.openslr.org/25/",
+      "lang": "am,sw,wo",
+      "license": null,
+      "notes": "African languages speech; inspect conversation suitability",
+      "access": "public_site_review_required",
+      "audio_evidence": "official_description",
+      "download_method": "manual_or_official_http",
+      "dialogue_verified": false
+    }
+  ]
+}
