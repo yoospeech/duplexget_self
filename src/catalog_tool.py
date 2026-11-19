@@ -143,7 +143,15 @@ def main():
                             result["destination"] = str(destination)
                     except Exception as exc:
                         result.update(status="error", reason=str(exc)[:500])
-            print(f"[{int(row['id']):03d}] {result['status']}: {result.get('reason', result.get('destination', ''))}")
+            if result["status"] == "dry_run":
+                size = result.get("estimated_bytes", 0) / (1024 ** 3)
+                missing = result.get("unknown_size_files", 0)
+                detail = f"{result['files']} files, known size {size:.2f} GiB"
+                if missing:
+                    detail += f", {missing} file sizes unknown"
+            else:
+                detail = result.get("reason", result.get("destination", ""))
+            print(f"[{int(row['id']):03d}] {result['status']}: {detail}")
             log.write(json.dumps(result, ensure_ascii=False, default=str) + "\n")
             log.flush()
 
