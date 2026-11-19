@@ -52,7 +52,7 @@ class TestTools(unittest.TestCase):
             for row in rows:
                 wav = target / row["path"]
                 audio, sr = sf.read(wav, always_2d=True)
-                self.assertEqual(sr, 24000)
+                self.assertEqual(sr, 48000)
                 self.assertEqual(audio.shape[1], 2)
                 self.assertTrue(wav.with_suffix(".activity.json").exists())
             self.assertEqual(len(json.loads((target / "errors.json").read_text())), 1)
