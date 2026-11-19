@@ -9,6 +9,9 @@ if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
 Usage:
   bash run.sh                       Download free public datasets + GPU processing
   bash run.sh --check               Audit datasets only
+  bash run.sh --check --catalog data/unified_catalog_500.json
+  bash run.sh --dry-run --catalog data/unified_catalog_500.json --include-restricted
+  bash run.sh --catalog data/unified_catalog_500.json --include-restricted
   bash run.sh --dry-run             Show estimated download sizes
   bash run.sh --inspect             Inspect existing raw audio (no GPU/models)
   bash run.sh --inspect --raw-dir /path/to/audio
@@ -67,7 +70,8 @@ fi
 
 if [[ "$MODE" == download ]]; then
   echo
-  echo "Only catalog-marked public datasets will be attempted."
+  echo "By default, only catalog-marked public datasets will be attempted."
+  echo "Use --catalog data/unified_catalog_500.json --include-restricted for HF sources in unified catalog."
   echo "Some free-to-download datasets forbid commercial use; you must review each source license."
   echo "Downloads may be very large, and archives/Parquet are not automatically unpacked."
   echo "This does not purchase, bypass gates, or grant training rights."
