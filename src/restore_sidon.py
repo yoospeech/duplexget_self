@@ -45,7 +45,7 @@ def main():
     parser.add_argument("--input", required=True, help="Source stereo WAV/FLAC")
     parser.add_argument("--output", required=True, help="Restored stereo 48 kHz WAV")
     parser.add_argument("--device", default="cuda:0")
-    parser.add_argument("--max-source-rate", type=int, default=22050)
+    parser.add_argument("--max-source-rate", type=int, default=47999)
     parser.add_argument("--allow-reprocess", action="store_true")
     args = parser.parse_args()
     import numpy as np
@@ -62,8 +62,8 @@ def main():
     audio, sr = sf.read(inp, dtype="float32", always_2d=True)
     if audio.shape[1] != 2:
         parser.error("Only genuine two-channel recordings are eligible")
-    if sr >= 24000 and not args.allow_reprocess:
-        parser.error("Source is already >=24kHz; Sidon bypass recommended")
+    if sr >= 48000 and not args.allow_reprocess:
+        parser.error("Source is already >=48kHz; Sidon bypass recommended")
     if sr > args.max_source_rate and not args.allow_reprocess:
         parser.error(f"Source sr {sr} exceeds configured restoration ceiling")
     if not args.device.startswith("cuda") or not torch.cuda.is_available():
