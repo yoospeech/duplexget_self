@@ -2,7 +2,7 @@
 """Optional Sidon v0.1 speech restoration for low-rate, speaker-isolated stereo.
 
 Sidon is a single-speaker restoration model: each stereo channel is processed
-independently to 48 kHz and then resampled to 24 kHz for Moshi.
+independently to 48 kHz and saved directly at 48 kHz.
 This MAY change turn timing, speaker timbre, phase and overlap behavior.
 Do not use this as proof of real high-frequency information.
 License: Sidon v0.1 checkpoint MIT; verify all dependencies and source data.
@@ -38,17 +38,12 @@ def restore(channel, orig_sr, fe, decoder, preprocessor, device):
     if out.shape[-1] < target48:
         out = torch.nn.functional.pad(out, (0, target48 - out.shape[-1]))
     out = out[:, :target48]
-    out24 = AF.resample(out, 48000, 24000).view(-1).numpy()
-    target24 = round(channel.shape[0] * 24000 / orig_sr)
-    if len(out24) < target24:
-        import numpy as np
-        out24 = np.pad(out24, (0, target24 - len(out24)))
-    return out24[:target24]
+    return out.view(-1).numpy()
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True, help="Source stereo WAV/FLAC")
-    parser.add_argument("--output", required=True, help="Restored stereo 24 kHz WAV")
+    parser.add_argument("--output", required=True, help="Restored stereo 48 kHz WAV")
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--max-source-rate", type=int, default=22050)
     parser.add_argument("--allow-reprocess", action="store_true")
@@ -82,10 +77,10 @@ def main():
     channels = [restore(audio[:, i], sr, fe, decoder, preprocessor, args.device) for i in range(2)]
     stereo = np.stack(channels, axis=-1)
     dst.parent.mkdir(parents=True, exist_ok=True)
-    sf.write(dst, stereo, 24000, subtype="PCM_16")
+    sf.write(dst, stereo, 48000, subtype="PCM_16")
     meta = {
         "source": str(inp), "output": str(dst), "original_sample_rate": sr,
-        "output_sample_rate": 24000, "original_channels": 2,
+        "output_sample_rate": 48000, "original_channels": 2,
         "model": model_id, "mode": "independent_stereo_channel_restoration",
         "risk": "Generated bandwidth and altered timing; validate original vs restored before training"
     }
