@@ -21,7 +21,8 @@ ANNOTATE_ONLY=0
 ACK=0
 INCLUDE_RESTRICTED=0
 ALLOW_UNKNOWN=0
-SWAP=0
+INSPECT_ONLY=0
+APPROVAL="$ROOT/reports/approved_stereo.jsonl"
 ALL=0
 DRY_RUN=0
 
@@ -44,16 +45,17 @@ Options:
                           assistant: channel 0 to clip.json (upstream style);
                           both: channel 1 additionally to clip.user.json sidecar
   --chunk-sec SEC          Segment length (default 100)
-  --swap-channels          Swap left and right before preprocessing
+  --inspect-only           Download if requested, then inspect; no training prep
+  --approval-manifest PATH Human-reviewed stereo allowlist (default reports/approved_stereo.jsonl)
   --download-only          Only download
-  --prep-only              No download; prepare and annotate local audio
+  --prep-only              No download; inspect/prepare/annotate local audio
   --annotate-only          No download/preparation; annotate existing output
   --acknowledge-rights     Confirm you reviewed terms and rights
   --include-restricted     Request restricted datasets if independently authorized
   --allow-unknown-license  Override metadata gate (does not grant rights)
   --dry-run                List intended downloads only; no processing
   --help                   This help
-NOTE: A stereo recording is NOT necessarily speaker-separated.
+NOTE: Even stereo files require manual channel-identity approval before preprocessing.
 NOTE: .tar/.zip/.parquet archives are not extracted automatically.
 EOF
 }
@@ -69,7 +71,8 @@ while (($#)); do
     --device) DEVICE="$2"; shift 2;;
     --channels) CHANNELS="$2"; shift 2;;
     --chunk-sec) CHUNK_SEC="$2"; shift 2;;
-    --swap-channels) SWAP=1; shift;;
+    --inspect-only) INSPECT_ONLY=1; shift;;
+    --approval-manifest) APPROVAL="$2"; shift 2;;
     --download-only) DOWNLOAD_ONLY=1; shift;;
     --prep-only) PREP_ONLY=1; shift;;
     --annotate-only) ANNOTATE_ONLY=1; shift;;
@@ -81,7 +84,7 @@ while (($#)); do
     *) echo "Unknown option: $1" >&2; usage; exit 2;;
   esac
 done
-if (( DOWNLOAD_ONLY + PREP_ONLY + ANNOTATE_ONLY > 1 )); then
+if (( DOWNLOAD_ONLY + PREP_ONLY + ANNOTATE_ONLY + INSPECT_ONLY > 1 )); then
   echo "Only one --download-only / --prep-only / --annotate-only is allowed" >&2
   exit 2
 fi
@@ -92,7 +95,7 @@ if [[ "$DEVICE" != auto && "$DEVICE" != cuda && "$DEVICE" != cpu ]]; then
   echo "--device must be auto, cuda, or cpu" >&2; exit 2
 fi
 command -v "$PYTHON" >/dev/null || { echo "Missing Python: $PYTHON" >&2; exit 1; }
-if (( ! PREP_ONLY && ! ANNOTATE_ONLY )); then
+if (( ! PREP_ONLY && ! ANNOTATE_ONLY && !(INSPECT_ONLY && ${#IDS[@]} == 0 && ! ALL) )); then
   if (( ${#IDS[@]} == 0 && ! ALL )); then
     echo "Specify one or more --id N or --all" >&2; exit 2
   fi
@@ -118,9 +121,21 @@ if (( ! ANNOTATE_ONLY )); then
   [[ -d "$input_dir" ]] || { echo "Missing input folder: $input_dir" >&2; exit 1; }
   command -v ffmpeg >/dev/null || { echo "Missing ffmpeg" >&2; exit 1; }
   command -v ffprobe >/dev/null || { echo "Missing ffprobe" >&2; exit 1; }
-  echo "[2/3] 24 kHz stereo Moshi preparation from $input_dir"
-  pargs=(--input "$input_dir" --out "$OUT" --chunk-sec "$CHUNK_SEC")
-  (( SWAP )) && pargs+=(--swap-channels)
+  echo "[2/4] Inspecting original audio channels and formats"
+  "$PYTHON" src/inspect_audio.py scan --input "$input_dir" --out "$OUT/audio_inspection.jsonl"
+  if (( INSPECT_ONLY )); then
+    echo "Audio inspection completed; no source automatically approved for training."
+    exit 0
+  fi
+  if [[ ! -s "$APPROVAL" ]]; then
+    echo "No reviewed stereo allowlist: $APPROVAL" >&2
+    echo "Manually verify speakers in original audio, then approve each input file:" >&2
+    echo "  python src/inspect_audio.py approve --file /path/to/file.wav --roles left-assistant --reviewed-speakers --out '$APPROVAL'" >&2
+    echo "Then run again with --prep-only --input '$input_dir'." >&2
+    exit 2
+  fi
+  echo "[3/4] 24 kHz stereo Moshi preparation (approved files only)"
+  pargs=(--input "$input_dir" --out "$OUT" --chunk-sec "$CHUNK_SEC" --approved-manifest "$APPROVAL")
   "$PYTHON" src/prepare_moshi.py "${pargs[@]}"
 fi
 manifest="$OUT/train.jsonl"
@@ -129,7 +144,7 @@ if [[ ! -s "$manifest" ]]; then
   echo "check audio-channel separation and re-run with --prep-only --input /path/to/audio" >&2
   exit 1
 fi
-echo "[3/3] Word alignment via whisper_timestamped"
+echo "[4/4] Word alignment via whisper_timestamped"
 lang="${LANG:-en}"
 "$PYTHON" src/annotate.py "$manifest" --lang "$lang" \
   --whisper_model "$WHISPER_MODEL" --device "$DEVICE" --channels "$CHANNELS" --local
