@@ -2,6 +2,7 @@
 """Catalog audit and opt-in Hugging Face dataset downloader."""
 import argparse
 import json
+import fnmatch
 import os
 from pathlib import Path
 from urllib.parse import urlparse
@@ -44,12 +45,15 @@ def inspect(row):
         license_id = getattr(card, "license", None) if card else None
         if isinstance(card, dict):
             license_id = card.get("license")
-        files = [x.rfilename for x in info.siblings or []]
+        siblings = info.siblings or []
+        files = [x.rfilename for x in siblings]
         media = [x for x in files if x.lower().endswith((".wav", ".flac", ".mp3", ".ogg", ".opus", ".m4a", ".tar", ".zip", ".parquet", ".arrow"))]
+        known_sizes = [x.size for x in siblings if isinstance(getattr(x, "size", None), int)]
         return {"id": row["id"], "repo": rid, "status": "accessible",
                 "gated": bool(info.gated), "private": bool(info.private),
                 "license": license_id, "file_count": len(files),
-                "media_container_files": len(media), "sample_files": media[:8]}
+                "media_container_files": len(media), "sample_files": media[:8],
+                "known_size_bytes": sum(known_sizes), "sized_files": len(known_sizes)}
     except Exception as exc:
         return {"id": row["id"], "repo": rid, "status": "unavailable", "error": str(exc)[:300]}
 
@@ -115,16 +119,28 @@ def main():
                 else:
                     destination = out / f"{int(row['id']):03d}_{rid.replace('/', '__')}"
                     try:
-                        files = snapshot_download(repo_id=rid, repo_type="dataset",
-                                                  local_dir=destination,
-                                                  allow_patterns=None if args.all_files else PATTERNS,
-                                                  max_workers=args.workers, dry_run=args.dry_run,
-                                                  token=os.getenv("HF_TOKEN"))
-                        result["status"] = "dry_run" if args.dry_run else "downloaded"
-                        result["destination"] = str(destination)
                         if args.dry_run:
-                            result["files"] = len(files)
-                            result["estimated_bytes"] = sum((getattr(f, "file_size", 0) or 0) for f in files)
+                            # Compatible with huggingface_hub versions that do NOT expose
+                            # snapshot_download(dry_run=...). Metadata only, no file transfer.
+                            from huggingface_hub import HfApi
+                            info = HfApi().dataset_info(rid, files_metadata=True,
+                                                        token=os.getenv("HF_TOKEN"))
+                            selected = [x for x in (info.siblings or [])
+                                        if args.all_files or any(fnmatch.fnmatch(x.rfilename, p) for p in PATTERNS)]
+                            known = [x.size for x in selected if isinstance(getattr(x, "size", None), int)]
+                            result["status"] = "dry_run"
+                            result["files"] = len(selected)
+                            result["estimated_bytes"] = sum(known)
+                            result["unknown_size_files"] = len(selected) - len(known)
+                            result["note"] = "Estimated repository files, not verified audio-only size"
+                        else:
+                            snapshot_download(repo_id=rid, repo_type="dataset",
+                                              local_dir=destination,
+                                              allow_patterns=None if args.all_files else PATTERNS,
+                                              max_workers=args.workers,
+                                              token=os.getenv("HF_TOKEN"))
+                            result["status"] = "downloaded"
+                            result["destination"] = str(destination)
                     except Exception as exc:
                         result.update(status="error", reason=str(exc)[:500])
             print(f"[{int(row['id']):03d}] {result['status']}: {result.get('reason', result.get('destination', ''))}")
