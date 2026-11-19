@@ -104,7 +104,7 @@ def prepare(args):
             original_sr = source_sample_rate(source)
             processed_source = source
             sidon_applied = False
-            if original_sr < 24000 and args.lowrate_method == "sidon":
+            if original_sr < 48000 and args.lowrate_method == "sidon":
                 restored = out / "sidon_restored" / f"{index:05d}_{fingerprint}.wav"
                 restored.parent.mkdir(parents=True, exist_ok=True)
                 if args.overwrite or not restored.exists():
@@ -113,8 +113,8 @@ def prepare(args):
                                     "--device", args.sidon_device], check=True)
                 processed_source = restored
                 sidon_applied = True
-            elif original_sr < 24000 and args.lowrate_method == "reject":
-                raise ValueError(f"Source {original_sr} Hz <24kHz; choose --lowrate-method sidon or resample")
+            elif original_sr < 48000 and args.lowrate_method == "reject":
+                raise ValueError(f"Source {original_sr} Hz <48kHz; choose --lowrate-method sidon or resample")
             part = 0
             start = 0.0
             while start < total:
@@ -159,7 +159,7 @@ def main():
     p.add_argument("--input", required=True)
     p.add_argument("--out", default="processed/moshi")
     p.add_argument("--chunk-sec", type=float, default=100)
-    p.add_argument("--lowrate-method", choices=["reject", "resample", "sidon"], default="reject")
+    p.add_argument("--lowrate-method", choices=["reject", "resample", "sidon"], default="sidon")
     p.add_argument("--sidon-device", default="cuda:0")
     p.add_argument("--min-sec", type=float, default=3)
     p.add_argument("--approved-manifest", required=True, help="Explicitly reviewed stereo file allowlist")
