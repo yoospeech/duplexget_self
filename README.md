@@ -57,9 +57,13 @@ Kyutai's official `moshi-finetune` input schema requires:
 Place **verified separated two-channel dialogues** under `incoming/` (or any folder):
 
 ```bash
-python src/prepare_moshi.py --input incoming --out processed/moshi --chunk-sec 100
-# If your corpus uses right channel = assistant:
-python src/prepare_moshi.py --input incoming --out processed/moshi --swap-channels
+python src/inspect_audio.py scan --input incoming --out reports/audio_inspection.jsonl
+# Human review is required: listen to both channels and verify the speaker roles.
+python src/inspect_audio.py approve --file /ABS/PATH/TO/incoming/dialogue.wav \
+  --roles left-assistant --reviewed-speakers
+python src/prepare_moshi.py --input incoming --out processed/moshi --chunk-sec 100 \
+  --approved-manifest reports/approved_stereo.jsonl
+# If right channel is assistant, approve using --roles right-assistant instead.
 ```
 
 This creates `processed/moshi/data_stereo/*.wav` (24 kHz 16-bit stereo), `processed/moshi/train.jsonl`, `provenance.jsonl`, optional energy-based `.activity.json` (80 ms bins), and `errors.json`.
@@ -79,12 +83,15 @@ pip install -r requirements.txt
 python src/catalog_tool.py audit --id 4
 
 # Full pipeline for a public, independently authorized HF dataset
-bash download_proc.sh --id 4 --lang id --acknowledge-rights
+bash download_proc.sh --id 4 --lang id --acknowledge-rights --inspect-only
 
 # Multiple datasets in one run
-bash download_proc.sh --id 4 --id 5 --lang id --acknowledge-rights
+bash download_proc.sh --id 4 --id 5 --lang id --acknowledge-rights --inspect-only
 
 # Audio already available locally (left=assistant, right=user)
+bash download_proc.sh --inspect-only --input /path/to/stereo_audio
+# Listen and approve selected stereo files before proceeding:
+python src/inspect_audio.py approve --file /absolute/path/to/separated.wav --roles left-assistant --reviewed-speakers
 bash download_proc.sh --prep-only --input /path/to/stereo_audio --lang ko
 
 # Reannotate existing processed/moshi/train.jsonl
@@ -106,9 +113,28 @@ This replaces the previous `transcribe_channels.py` preview and follows the user
 
 Default: channel 0 (assistant) only, preserving the original formatter. `--channels both` also creates `<clip>.user.json` with channel-1 alignments; the user-sidecar JSON is **not automatically consumed by upstream Moshi** and its speaker label is still `SPEAKER_MAIN`, scoped to its own channel. Verify the exact Moshi fine-tune commit's expected transcript schema before training.
 
+### Mandatory audio inspection gate
+
+No input audio is automatically accepted as speaker-separated. The `src/inspect_audio.py scan` stage records sample rate, channels, codec, duration, size, channel correlation and approximate simultaneous energy activity in `reports/audio_inspection.jsonl` and `.csv`. Only WAV/FLAC/MP3/etc directly present as files are inspected, not audio nested within TAR/ZIP/Parquet.
+
+`mono` audio is preserved for future diarization/separation. `multichannel_review` and `stereo_near_duplicate` are flagged for review. Even `stereo_review` requires listening to both channels to verify speaker isolation. No automatic heuristic certifies individual speakers or true barge-in.
+
+Once a human has verified a particular file contains speaker-separated audio, run:
+```bash
+python src/inspect_audio.py approve --file /absolute/path/to/recording.wav \
+  --roles left-assistant --reviewed-speakers
+```
+The approval file `reports/approved_stereo.jsonl` stores original absolute path, size, modification timestamp and roles. Changed files must be re-approved. `prepare_moshi.py` refuses all unapproved sources, and automatically swaps channels for entries approved with `--roles right-assistant`.
+
+If source channels are mixed, use a separate diarization/source separation process and inspect the separated result. This repository does not perform automated speaker separation.
+
 Stereo source channels must be independent speakers; if not, perform source-specific speaker separation first. Mono inputs are rejected by default. Source data inside Parquet, TAR or ZIP is **not automatically extracted**. In that case the downloader completes but preprocessing cannot start until audio has been extracted safely and its stereo channel roles confirmed. No credentials or raw audio are pushed to GitHub.
 
 This is a local-first orchestration script; it does not submit SLURM jobs or pretend commercial permission has been granted. `--all` can be extremely large and many catalog entries are restricted or unverified. Rights flags only acknowledge your own review; they do not provide a license. Some data catalog links and language/hours metadata remain unverified.
+
+## Current verification status
+
+Repository files are committed and readable through the GitHub connector. Actual large-corpus download, diarization quality and end-to-end integration have not been validated in this environment. Test locally with `python -m unittest discover -s tests` and a short manually reviewed stereo clip before large downloads.
 
 ## GitHub publishing
 
