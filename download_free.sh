@@ -16,6 +16,9 @@ WHISPER_MODEL="medium"
 CHUNK_SEC=100
 CHANNELS="both"
 ASR_LANG="auto"
+CATALOG="$ROOT/data/catalog.json"
+INCLUDE_RESTRICTED=0
+ALLOW_UNKNOWN_LICENSE=0
 usage() {
   cat <<'HELP'
 Usage:
@@ -25,7 +28,10 @@ Usage:
   bash download_free.sh --inspect --raw-dir raw/
   bash download_free.sh --process-existing --raw-dir raw/
 Options:
-  --download              Download catalog-marked public repos; inspect/process
+  --download              Download selected HF catalog repos; inspect/process
+  --catalog PATH          Choose catalog JSON (e.g. data/unified_catalog_500.json)
+  --include-restricted    Attempt accessible gated/private HF repositories
+  --allow-unknown-license Attempt unlabelled-license repos ONLY after reviewing rights
   --check                 Audit public catalog entries only
   --dry-run               Estimate downloadable sizes; do not process audio
   --inspect               Inspect existing audio and inventory archives; NO GPU models
@@ -59,6 +65,9 @@ while (($#)); do
     --process-existing) MODE=existing; shift;;
     --acknowledge-rights) ACK=1; shift;;
     --lang) LANGS+=("$2"); shift 2;;
+    --catalog) CATALOG="$2"; shift 2;;
+    --include-restricted) INCLUDE_RESTRICTED=1; shift;;
+    --allow-unknown-license) ALLOW_UNKNOWN_LICENSE=1; shift;;
     --asr-lang) ASR_LANG="$2"; shift 2;;
     --raw-dir) RAW="$2"; shift 2;;
     --out) OUT="$2"; shift 2;;
@@ -76,7 +85,11 @@ if ! [[ "$WORKERS" =~ ^[1-9][0-9]*$ ]] || ! [[ "$CHANNELS" == both || "$CHANNELS
   echo "Invalid worker/channel/GPU option" >&2; exit 2
 fi
 "$PYTHON" -c 'import huggingface_hub' || { echo "Install requirements.txt first" >&2; exit 1; }
-COMMON=(--all --public-only)
+COMMON=(--all)
+if (( ! INCLUDE_RESTRICTED )); then COMMON+=(--public-only); fi
+EXTRA=()
+if (( INCLUDE_RESTRICTED )); then EXTRA+=(--include-restricted); fi
+if (( ALLOW_UNKNOWN_LICENSE )); then EXTRA+=(--allow-unknown-license); fi
 for lang in "${LANGS[@]}"; do COMMON+=(--lang "$lang"); done
 mkdir -p "$ROOT/reports"
 if [[ "$MODE" == inspect ]]; then
@@ -90,12 +103,12 @@ if [[ "$MODE" == inspect ]]; then
   exit 0
 fi
 if [[ "$MODE" == check ]]; then
-  "$PYTHON" src/catalog_tool.py audit "${COMMON[@]}" --out "$ROOT/reports/free_audit.jsonl"
-  "$PYTHON" src/public_stats.py --catalog data/catalog.json --audit "$ROOT/reports/free_audit.jsonl"
+  "$PYTHON" src/catalog_tool.py --catalog "$CATALOG" audit "${COMMON[@]}" --out "$ROOT/reports/free_audit.jsonl"
+  "$PYTHON" src/public_stats.py --catalog "$CATALOG" --audit "$ROOT/reports/free_audit.jsonl"
   exit 0
 fi
 if [[ "$MODE" == dry-run ]]; then
-  "$PYTHON" src/catalog_tool.py download "${COMMON[@]}" --out "$RAW" --dry-run --acknowledge-rights
+  "$PYTHON" src/catalog_tool.py --catalog "$CATALOG" download "${COMMON[@]}" "${EXTRA[@]}" --out "$RAW" --dry-run --acknowledge-rights
   "$PYTHON" src/public_stats.py --catalog data/catalog.json --audit "$RAW/download_results.jsonl"
   echo "Dataset-level file-size estimates: $RAW/download_results.jsonl"
   echo "No audio downloaded (dry-run). Use 'bash run.sh' for actual download."
@@ -107,7 +120,7 @@ if [[ "$MODE" == run ]]; then
   RESULT_LOG="$RAW/download_results.jsonl"
   START_LINES=0
   [[ -f "$RESULT_LOG" ]] && START_LINES=$(wc -l < "$RESULT_LOG")
-  "$PYTHON" src/catalog_tool.py download "${COMMON[@]}" --out "$RAW" --acknowledge-rights --workers "$WORKERS"
+  "$PYTHON" src/catalog_tool.py --catalog "$CATALOG" download "${COMMON[@]}" "${EXTRA[@]}" --out "$RAW" --acknowledge-rights --workers "$WORKERS"
   "$PYTHON" - "$RESULT_LOG" "$START_LINES" <<'PY'
 import json, sys
 log, offset = sys.argv[1], int(sys.argv[2])
