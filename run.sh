@@ -10,6 +10,8 @@ Usage:
   bash run.sh                       Download free public datasets + GPU processing
   bash run.sh --check               Audit datasets only
   bash run.sh --dry-run             Show estimated download sizes
+  bash run.sh --inspect             Inspect existing raw audio (no GPU/models)
+  bash run.sh --inspect --raw-dir /path/to/audio
   bash run.sh --process-existing    Process already downloaded audio under raw/
   bash run.sh --lang id             Limit acquisition to a catalog language
   bash run.sh --device cuda:1       Select GPU for Whisper
@@ -26,6 +28,7 @@ for arg in "$@"; do
   case "$arg" in
     --check) MODE=check; ARGS+=("$arg");;
     --dry-run) MODE=dry-run; ARGS+=("$arg");;
+    --inspect) MODE=inspect; ARGS+=("$arg");;
     --process-existing) MODE=existing; ARGS+=("$arg");;
     --download) MODE=download; ARGS+=("$arg");;
     --skip-install) SKIP_INSTALL=1;;
@@ -35,7 +38,7 @@ for arg in "$@"; do
 done
 
 command -v python3 >/dev/null || { echo "Python 3.10+ required" >&2; exit 1; }
-if [[ "$MODE" == download || "$MODE" == existing ]]; then
+if [[ "$MODE" == download || "$MODE" == existing || "$MODE" == inspect ]]; then
   command -v ffmpeg >/dev/null || { echo "ffmpeg missing; install: sudo apt-get install ffmpeg" >&2; exit 1; }
   command -v ffprobe >/dev/null || { echo "ffprobe missing; install: sudo apt-get install ffmpeg" >&2; exit 1; }
 fi
@@ -45,7 +48,11 @@ if [[ ! -f .venv/bin/python ]]; then
 fi
 export PYTHON="$ROOT/.venv/bin/python"
 if (( ! SKIP_INSTALL )); then
-  "$PYTHON" -m pip install -r requirements-sidon.txt
+  if [[ "$MODE" == inspect ]]; then
+    "$PYTHON" -m pip install "numpy>=1.26,<3"
+  else
+    "$PYTHON" -m pip install -r requirements-sidon.txt
+  fi
 fi
 
 # Download/inspection alone are CPU-capable, but model inference never falls back.
