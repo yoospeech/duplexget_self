@@ -52,15 +52,14 @@ def annotate_one(audio_path, output_path, model, language, channel,
     if output_path.exists() and not overwrite:
         return "skipped"
     gc.collect()
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
+    torch.cuda.empty_cache()
     audio, sr = sphn.read(audio_path)
     if audio.ndim == 1:
         audio = audio[None, :]
     if channel >= audio.shape[0]:
         raise ValueError(f"Audio has {audio.shape[0]} channel(s); requested {channel}")
-    vocals = torch.from_numpy(np.asarray(audio[channel]).copy()).float()[None]
-    vocals = F.resample(vocals, sr, SAMPLE_RATE).squeeze(0).numpy()
+    vocals = torch.from_numpy(np.asarray(audio[channel]).copy()).float()[None].to(next(model.parameters()).device)
+    vocals = F.resample(vocals, sr, SAMPLE_RATE).squeeze(0).cpu().numpy()
     duration = len(vocals) / SAMPLE_RATE
     if duration > 4 * 3600:
         raise ValueError("Input audio exceeds 4 hours")
@@ -103,7 +102,7 @@ def main():
     p.add_argument("egs", type=Path, help="Moshi train.jsonl or JSONL.gz")
     p.add_argument("--lang", default="en", help="ISO language code, or auto")
     p.add_argument("--whisper_model", default="medium")
-    p.add_argument("--device", choices=["auto", "cuda", "cpu"], default="auto")
+    p.add_argument("--device", default="cuda:0", help="GPU-only: cuda:0, cuda:1, ...")
     p.add_argument("--channels", choices=["assistant", "both"], default="assistant",
                    help="Upstream-compatible assistant json; optional sidecar user json")
     p.add_argument("--keep_silence_in_segments", type=float, default=0.2)
@@ -117,9 +116,19 @@ def main():
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO)
     if args.shards <= 0 or args.shard < 0 or args.shard >= args.shards:
         p.error("shard must satisfy 0 <= shard < shards")
-    device = ("cuda" if torch.cuda.is_available() else "cpu") if args.device == "auto" else args.device
-    if device == "cuda" and not torch.cuda.is_available():
-        p.error("CUDA requested but not available")
+    if not args.device.startswith("cuda"):
+        p.error("GPU-only inference: use --device cuda:0 or another CUDA index")
+    if not torch.cuda.is_available():
+        p.error("CUDA unavailable: install a CUDA-enabled torch build and check NVIDIA drivers")
+    try:
+        gpu_index = torch.device(args.device).index
+        gpu_index = 0 if gpu_index is None else gpu_index
+        if gpu_index >= torch.cuda.device_count():
+            p.error(f"GPU {args.device} not found. Visible GPUs: {torch.cuda.device_count()}")
+        torch.cuda.set_device(gpu_index)
+    except (ValueError, RuntimeError) as error:
+        p.error(str(error))
+    device = args.device
     model = whisper.load_model(args.whisper_model, device=device)
     paths = list(load_audio_paths(args.egs))
     selected = paths[args.shard::args.shards]
@@ -146,7 +155,7 @@ def main():
                 errors += 1
                 logger.exception("Failed: %s channel %d", path, channel)
                 err.touch()
-                if device == "cuda" and torch.cuda.is_initialized():
+                if torch.cuda.is_initialized():
                     torch.cuda.empty_cache()
     if errors:
         raise SystemExit(f"Annotation failures: {errors}")
