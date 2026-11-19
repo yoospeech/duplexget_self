@@ -22,11 +22,13 @@ Usage:
   bash download_free.sh --download --acknowledge-rights
   bash download_free.sh --check
   bash download_free.sh --dry-run
+  bash download_free.sh --inspect --raw-dir raw/
   bash download_free.sh --process-existing --raw-dir raw/
 Options:
   --download              Download catalog-marked public repos; inspect/process
   --check                 Audit public catalog entries only
   --dry-run               Estimate downloadable sizes; do not process audio
+  --inspect               Inspect existing audio and inventory archives; NO GPU models
   --process-existing      Skip downloading and process local audio
   --acknowledge-rights    Required for download; does not grant training rights
   --lang CODE             Repeatable catalog language selector
@@ -53,6 +55,7 @@ while (($#)); do
     --download) MODE=run; shift;;
     --check) MODE=check; shift;;
     --dry-run) MODE=dry-run; shift;;
+    --inspect) MODE=inspect; shift;;
     --process-existing) MODE=existing; shift;;
     --acknowledge-rights) ACK=1; shift;;
     --lang) LANGS+=("$2"); shift 2;;
@@ -76,6 +79,16 @@ fi
 COMMON=(--all --public-only)
 for lang in "${LANGS[@]}"; do COMMON+=(--lang "$lang"); done
 mkdir -p "$ROOT/reports"
+if [[ "$MODE" == inspect ]]; then
+  [[ -d "$RAW" ]] || { echo "Input directory missing: $RAW" >&2; exit 2; }
+  command -v ffprobe >/dev/null || { echo "ffprobe required" >&2; exit 1; }
+  command -v ffmpeg >/dev/null || { echo "ffmpeg required" >&2; exit 1; }
+  echo "[INSPECT] Checking downloaded audio; NO Sidon / Whisper / CUDA inference"
+  "$PYTHON" src/inspect_audio.py scan --input "$RAW" --out "$ROOT/reports/free_audio_inspection.jsonl"
+  "$PYTHON" src/inspect_summary.py --input "$RAW"     --inspection "$ROOT/reports/free_audio_inspection.jsonl"     --out "$ROOT/reports/audio_by_dataset.csv"
+  echo "Reports: reports/free_audio_inspection.csv, reports/audio_by_dataset.csv"
+  exit 0
+fi
 if [[ "$MODE" == check ]]; then
   "$PYTHON" src/catalog_tool.py audit "${COMMON[@]}" --out "$ROOT/reports/free_audit.jsonl"
   "$PYTHON" src/public_stats.py --catalog data/catalog.json --audit "$ROOT/reports/free_audit.jsonl"
