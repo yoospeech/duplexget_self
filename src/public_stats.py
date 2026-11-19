@@ -38,8 +38,12 @@ def main():
         if len(langs) > 1 and isinstance(hours, (int, float)):
             multi_hours.append((d["name"], langs, hours))
         state = audit.get(int(d["id"]))
-        accessible = bool(state and state.get("status") == "accessible" and
-                          not state.get("gated") and not state.get("private"))
+        checked = state.get("audit", state) if state else None
+        accessible = bool(checked and checked.get("status") == "accessible" and
+                          not checked.get("gated") and not checked.get("private") and
+                          state.get("status") in ("accessible", "dry_run", "downloaded"))
+        # A dry-run records a snapshot of actual repository accessibility, not a download.
+        # Do not imply a public repository is available if it was skipped as gated/private.
         for lang in langs:
             item = totals[lang]
             item["datasets"] += 1
@@ -65,13 +69,17 @@ def main():
         writer.writerows(result)
     print(f"Catalog-marked public entries: {len(public)} / {len(rows)}")
     print(f"Languages represented: {len(result)}")
-    print("Language | dataset entries | single-language published hours | multilingual entries | remotely accessible")
+    print("Language | dataset entries | single-language published hours | multilingual entries | HF access confirmed")
     for d in result:
         print(f'{d["language"]:>8} | {d["datasets"]:>3} | {d["single_language_hours"]:>12,.2f}h | {d["multi_language_datasets"]:>3} | {d["accessible"]:>3}')
     print("Multilingual global hours (NOT allocated to individual languages):")
     for name, langs, hours in multi_hours:
         print(f'  {name}: {hours:,.2f}h total for {",".join(langs)}')
     print(f"Saved: {path}")
+    if not audit:
+        print("Access status: NOT CHECKED (no audit file found).")
+    else:
+        print("HF access confirmed from supplied audit/dry-run results; not a training-license check.")
     print("Actual disk storage (GB) cannot be inferred reliably from audio hours; inspect HF file sizes/dry-run.")
     print("Do NOT add all hours without deduplication or interpret this as confirmed audio download.")
 if __name__ == "__main__":
