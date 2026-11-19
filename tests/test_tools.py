@@ -40,7 +40,7 @@ class TestTools(unittest.TestCase):
                 "path": str(approved.resolve()), "size_bytes": stat.st_size,
                 "mtime_ns": stat.st_mtime_ns, "role_order": "left-assistant",
                 "human_verified": True
-            }) + "\\n")
+            }) + "\n")
             run = subprocess.run([
                 sys.executable, str(ROOT / "src/prepare_moshi.py"),
                 "--input", str(source), "--out", str(target),
