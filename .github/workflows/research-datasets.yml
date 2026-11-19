@@ -21,7 +21,7 @@ jobs:
         run: python -m pip install 'huggingface_hub>=0.32,<2'
       - name: Search Hugging Face and validate repository metadata
         run: |
-          python src/research_500.py --target 500 --per-query 160 --max-queries 50 --max-verify 1500 --workers 5
+          python src/research_500.py --target 500 --per-query 220 --max-queries 50 --max-verify 3600 --workers 7
       - name: Upload research CSV and JSON
         if: always()
         uses: actions/upload-artifact@v4
