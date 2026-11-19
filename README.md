@@ -2,6 +2,33 @@
 
 무료 공개 음성 데이터셋을 다운로드하고, **Stereo 검사 → Sidon 48kHz 복원 → GPU Whisper 단어 정렬**까지 연결하는 프로젝트입니다.
 
+## 통합 500개 후보 조사 (HF + GitHub + OpenSLR + 공식 배포처)
+
+- [통합 카탈로그 JSON](data/unified_catalog_500.json) · [CSV](data/unified_catalog_500.csv)
+- [Hugging Face 검증 후보](data/researched_datasets_500.json) · [GitHub 조사 리드](data/github_research_leads.json) · [공식/OpenSLR 배포처](data/official_corpus_sources.json)
+- **중요:** 통합 목록은 조사 *후보*입니다. 500개 고유 음성 대화 코퍼스가 확보됐다는 의미가 아닙니다. HF 미러, GitHub 코드 저장소, 유료 샘플, 단일화자 코퍼스는 실제 오디오·중복·권리 검증이 필요합니다.
+
+```bash
+git pull origin main
+
+# HF 후보 새로 검색 (네트워크 연결 필요, 다운로드 없음)
+.venv/bin/python src/research_500.py --target 500 --max-verify 3600
+
+# 세 출처를 합쳐 목록 재생성 (음성 다운로드 없음)
+python3 src/merge_catalogs.py --target 500
+
+# HF 후보만 메타데이터·용량 확인
+.venv/bin/python src/catalog_tool.py download \
+  --catalog data/researched_datasets_500.json --all \
+  --include-restricted --acknowledge-rights --dry-run
+
+# 실제 내려받은 파일의 Mono/Stereo, 샘플레이트, 길이 검사
+.venv/bin/python src/inspect_audio.py scan \
+  --input raw --out reports/audio_inspection.jsonl
+```
+
+**컬럼 의미:** `source`는 배포처, `audio_evidence`는 HF 파일 메타데이터 근거, `access`는 접근 제한, `license`는 표시된 라이선스입니다. `download_verified=false`, `dialogue_verified=false`, `channel_status=not_inspected`는 아직 검증하지 않았다는 의미이며, 불가능하다는 뜻이 아닙니다. Stereo 채널이 서로 다른 화자를 담는지도 별도 확인해야 합니다. GitHub·OpenSLR·공식 URL은 자동 다운로드가 아닌 수동 검증 후보로 기록합니다.
+
 ## 옵션별 실행 방법
 
 | 실행 명령 | 동작 | 다운로드 | GPU 모델 실행 |
