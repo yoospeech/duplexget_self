@@ -83,7 +83,9 @@ if [[ "$MODE" == check ]]; then
 fi
 if [[ "$MODE" == dry-run ]]; then
   "$PYTHON" src/catalog_tool.py download "${COMMON[@]}" --out "$RAW" --dry-run --acknowledge-rights
-  "$PYTHON" src/public_stats.py --catalog data/catalog.json --audit "$ROOT/reports/free_audit.jsonl"
+  "$PYTHON" src/public_stats.py --catalog data/catalog.json --audit "$RAW/download_results.jsonl"
+  echo "Dataset-level file-size estimates: $RAW/download_results.jsonl"
+  echo "No audio downloaded (dry-run). Use 'bash run.sh' for actual download."
   exit 0
 fi
 if [[ "$MODE" == run ]]; then
