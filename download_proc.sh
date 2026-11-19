@@ -12,7 +12,7 @@ INPUT=""
 RAW="$ROOT/raw"
 OUT="$ROOT/processed/moshi"
 WHISPER_MODEL="medium"
-DEVICE="auto"
+DEVICE="cuda:0"
 CHANNELS="assistant"
 CHUNK_SEC="100"
 LOWRATE_METHOD="sidon"
@@ -42,13 +42,13 @@ Options:
   --raw-dir PATH           Download destination (default raw/)
   --out PATH               Moshi output (default processed/moshi/)
   --whisper-model NAME     Whisper model (default medium)
-  --device auto|cuda|cpu   Annotation device
+  --device cuda:N         GPU for Whisper annotation (default cuda:0)
   --channels assistant|both
                           assistant: channel 0 to clip.json (upstream style);
                           both: channel 1 additionally to clip.user.json sidecar
   --chunk-sec SEC          Segment length (default 100)
   --lowrate-method MODE    sidon (default), reject, resample
-  --sidon-device DEVICE    CUDA device for Sidon (default cuda:0)
+  --sidon-device cuda:N    GPU for Sidon (default cuda:0)
   --inspect-only           Download if requested, then inspect; no training prep
   --approval-manifest PATH Human-reviewed stereo allowlist (default reports/approved_stereo.jsonl)
   --download-only          Only download
@@ -100,8 +100,8 @@ fi
 if [[ "$CHANNELS" != assistant && "$CHANNELS" != both ]]; then
   echo "--channels must be assistant or both" >&2; exit 2
 fi
-if [[ "$DEVICE" != auto && "$DEVICE" != cuda && "$DEVICE" != cpu ]]; then
-  echo "--device must be auto, cuda, or cpu" >&2; exit 2
+if [[ ! "$DEVICE" =~ ^cuda(:[0-9]+)?$ || ! "$SIDON_DEVICE" =~ ^cuda(:[0-9]+)?$ ]]; then
+  echo "GPU-only pipeline: --device and --sidon-device must be CUDA devices" >&2; exit 2
 fi
 command -v "$PYTHON" >/dev/null || { echo "Missing Python: $PYTHON" >&2; exit 1; }
 if (( ! PREP_ONLY && ! ANNOTATE_ONLY && !(INSPECT_ONLY && ${#IDS[@]} == 0 && ! ALL) )); then
@@ -124,6 +124,12 @@ fi
 if (( DOWNLOAD_ONLY || DRY_RUN )); then
   echo "Download stage complete. Stopping as requested."
   exit 0
+fi
+# Only model-running stages need CUDA; download and inspection do not.
+if (( ! DOWNLOAD_ONLY && ! INSPECT_ONLY && ! DRY_RUN )); then
+  "$PYTHON" -c 'import torch,sys; print("CUDA:", torch.cuda.is_available(), "GPUs:", torch.cuda.device_count()); sys.exit(0 if torch.cuda.is_available() else 1)' || {
+    echo "CUDA unavailable. Refusing CPU model fallback." >&2; exit 1;
+  }
 fi
 if (( ! ANNOTATE_ONLY )); then
   input_dir="${INPUT:-$RAW}"
