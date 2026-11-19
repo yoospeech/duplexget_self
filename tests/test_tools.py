@@ -33,10 +33,18 @@ class TestTools(unittest.TestCase):
             sf.write(source / "stereo.wav", stereo, 24000)
             sf.write(source / "mono.wav", stereo[:, 0], 24000)
             target = Path(td) / "prepared"
+            approval = Path(td) / "approved.jsonl"
+            approved = source / "stereo.wav"
+            stat = approved.stat()
+            approval.write_text(json.dumps({
+                "path": str(approved.resolve()), "size_bytes": stat.st_size,
+                "mtime_ns": stat.st_mtime_ns, "role_order": "left-assistant",
+                "human_verified": True
+            }) + "\\n")
             run = subprocess.run([
                 sys.executable, str(ROOT / "src/prepare_moshi.py"),
                 "--input", str(source), "--out", str(target),
-                "--chunk-sec", "3", "--min-sec", "1"
+                "--chunk-sec", "3", "--min-sec", "1", "--approved-manifest", str(approval)
             ], capture_output=True, text=True)
             self.assertEqual(run.returncode, 0, run.stderr)
             rows = [json.loads(s) for s in (target / "train.jsonl").read_text().splitlines()]
