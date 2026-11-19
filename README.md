@@ -2,6 +2,35 @@
 
 무료 공개 음성 데이터셋을 다운로드하고, **Stereo 검사 → Sidon 48kHz 복원 → GPU Whisper 단어 정렬**까지 연결하는 프로젝트입니다.
 
+## Hugging Face 외 다운로드: OpenSLR / 공식 코퍼스
+
+현재 `run.sh`의 HF 수집과 별개로, 통합 카탈로그에서 **OpenSLR 공식 페이지에 직접 연결된 압축 파일**을 찾아 내려받는 도구를 추가했습니다. GitHub의 코드·판매 목록은 실제 음성 파일로 검증되지 않았으므로 자동 다운로드하지 않습니다.
+
+```bash
+git pull origin main
+
+# OpenSLR 공식 페이지의 실제 다운로드 링크 목록만 확인
+python src/download_official.py --catalog data/unified_catalog_500.json --dry-run
+
+# OpenSLR에서 직접 링크가 확인된 아카이브 다운로드
+# 개별 코퍼스 라이선스를 검토한 후 실행
+python src/download_official.py --catalog data/unified_catalog_500.json \
+  --acknowledge-rights --out raw/official --max-files 100
+
+# 예: 371번 AISHELL-4의 공식 링크만 확인
+python src/download_official.py --catalog data/unified_catalog_500.json \
+  --id 371 --dry-run
+
+# GitHub/공식 사이트 중 자동 다운로드 URL 미확인 항목도 출력
+python src/download_official.py --catalog data/unified_catalog_500.json \
+  --source all --dry-run
+
+# 추출 후 실제 오디오 채널 검사
+bash run.sh --inspect --raw-dir raw/official --skip-install
+```
+
+**제약:** OpenSLR 웹페이지에 직접 링크된 `.tar.gz`/`.zip` 등만 처리합니다. 파일이 별도 서버·스크립트·인증·동적 링크로 배포되는 경우에는 수동 확인이 필요합니다. `--dry-run`은 파일 수와 링크만 확인하며 크기·권한·다운로드 성공을 보장하지 않습니다. 실제 다운로드는 `--acknowledge-rights`가 필수이고, 압축 해제는 자동으로 하지 않습니다. GitHub 후보와 비-HF 공식 배포처는 다운로드 URL 검증 후 별도 어댑터가 필요합니다.
+
 ## 통합 카탈로그 실행 (현재 551개 조사 후보)
 
 ```bash
