@@ -63,6 +63,7 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     for command in ("list", "audit", "download"):
         p = sub.add_parser(command)
+        p.add_argument("--catalog", default=argparse.SUPPRESS, help="Dataset catalog JSON (also accepted before subcommand)")
         p.add_argument("--id", action="append", type=int)
         p.add_argument("--lang", action="append")
         p.add_argument("--public-only", action="store_true")
@@ -104,7 +105,7 @@ def main():
     with (out / "download_results.jsonl").open("a", encoding="utf-8") as log:
         for row in rows:
             rid = repo_id(row["url"])
-            result = {"id": row["id"], "repo": rid, "status": "skipped"}
+            result = {"id": row["id"], "name": row.get("name"), "source": row.get("source", "huggingface"), "repo": rid, "status": "skipped"}
             if not rid:
                 result["reason"] = "not_hf"
             elif row.get("access") != "공개" and not args.include_restricted:
@@ -116,13 +117,11 @@ def main():
                     result["reason"] = "unavailable"
                 elif (audit.get("gated") or audit.get("private")) and not args.include_restricted:
                     result["reason"] = "gated_or_private"
-                elif (audit.get("gated") or audit.get("private")) and args.include_restricted:
-                    # Gated status alone does not reveal whether the authenticated
-                    # user was approved. Attempt the download; HF enforces access.
-                    result["access_attempt"] = "authenticated_restricted"
                 elif not audit.get("license") and not args.allow_unknown_license:
                     result["reason"] = "unknown_license"
                 else:
+                    if (audit.get("gated") or audit.get("private")) and args.include_restricted:
+                        result["access_attempt"] = "authenticated_restricted"
                     destination = out / f"{int(row['id']):03d}_{rid.replace('/', '__')}"
                     try:
                         if args.dry_run:
