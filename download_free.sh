@@ -88,7 +88,23 @@ if [[ "$MODE" == dry-run ]]; then
 fi
 if [[ "$MODE" == run ]]; then
   if (( ACK != 1 )); then echo "Add --acknowledge-rights after checking licenses" >&2; exit 2; fi
+  mkdir -p "$RAW"
+  RESULT_LOG="$RAW/download_results.jsonl"
+  START_LINES=0
+  [[ -f "$RESULT_LOG" ]] && START_LINES=$(wc -l < "$RESULT_LOG")
   "$PYTHON" src/catalog_tool.py download "${COMMON[@]}" --out "$RAW" --acknowledge-rights --workers "$WORKERS"
+  "$PYTHON" - "$RESULT_LOG" "$START_LINES" <<'PY'
+import json, sys
+log, offset = sys.argv[1], int(sys.argv[2])
+with open(log, encoding="utf-8") as f:
+    entries = [json.loads(line) for line in f.readlines()[offset:] if line.strip()]
+completed = [x for x in entries if x.get("status") == "downloaded"]
+failed = [x for x in entries if x.get("status") == "error"]
+print(f"Download summary: {len(completed)} successful, {len(failed)} errors, {len(entries)-len(completed)-len(failed)} skipped")
+if not completed:
+    print("No datasets downloaded. Skipping audio inspection, Sidon, and Whisper.", file=sys.stderr)
+    sys.exit(2)
+PY
 fi
 command -v ffmpeg >/dev/null || { echo "ffmpeg required" >&2; exit 1; }
 command -v ffprobe >/dev/null || { echo "ffprobe required" >&2; exit 1; }
