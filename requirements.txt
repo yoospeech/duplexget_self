@@ -2,3 +2,10 @@ huggingface_hub>=0.28,<2
 numpy>=1.26,<3
 soundfile>=0.12,<1
 # Optional: pip install -r requirements-asr.txt
+
+# Kyutai-style annotate.py via whisper_timestamped
+sphn
+whisper-timestamped
+# PyTorch + torchaudio must use compatible builds (install per GPU/CUDA environment)
+torch
+torchaudio
