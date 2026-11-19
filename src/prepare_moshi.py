@@ -81,21 +81,26 @@ def prepare(args):
     out = Path(args.out).resolve()
     wav_dir = out / "data_stereo"
     wav_dir.mkdir(parents=True, exist_ok=True)
-    allowed = approved_sources(args.approved_manifest)
+    if args.auto_stereo and args.approved_manifest:
+        raise ValueError("Choose either --auto-stereo or --approved-manifest")
+    allowed = {} if args.auto_stereo else approved_sources(args.approved_manifest)
     sources = sorted(p for p in source_root.rglob("*") if p.is_file() and p.suffix.lower() in EXTS)
     manifest, provenance, errors = [], [], []
     for index, source in enumerate(sources):
         try:
             source = source.resolve()
             review = allowed.get(source)
-            if review is None:
+            if not args.auto_stereo and review is None:
                 raise ValueError("Not in human-verified stereo allowlist")
-            stat = source.stat()
-            if stat.st_size != review.get("size_bytes") or stat.st_mtime_ns != review.get("mtime_ns"):
-                raise ValueError("Source file changed since manual approval; inspect and approve again")
-            if review.get("role_order") not in ("left-assistant", "right-assistant"):
-                raise ValueError("Approved source has invalid channel roles")
+            if review is not None:
+                stat = source.stat()
+                if stat.st_size != review.get("size_bytes") or stat.st_mtime_ns != review.get("mtime_ns"):
+                    raise ValueError("Source changed since manual approval; inspect and approve again")
+                if review.get("role_order") not in ("left-assistant", "right-assistant"):
+                    raise ValueError("Invalid approved channel roles")
             channels, total = probe(source)
+            if args.auto_stereo:
+                review = {"role_order": "left-assistant", "human_verified": False}
             if channels != 2:
                 raise ValueError("Approved file must remain exactly stereo")
             if channels < 2 and args.mono_policy == "reject":
@@ -108,8 +113,18 @@ def prepare(args):
                 restored = out / "sidon_restored" / f"{index:05d}_{fingerprint}.wav"
                 restored.parent.mkdir(parents=True, exist_ok=True)
                 if args.overwrite or not restored.exists():
+                    # Decode any compressed audio to a temporary WAV before Sidon.
+                    # Original source is untouched.
+                    sidon_input = source
+                    if source.suffix.lower() not in (".wav", ".flac"):
+                        sidon_input = out / "sidon_inputs" / f"{index:05d}_{fingerprint}.wav"
+                        sidon_input.parent.mkdir(parents=True, exist_ok=True)
+                        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+                                        "-i", str(source), "-ar", str(original_sr),
+                                        "-af", "pan=stereo|c0=c0|c1=c1",
+                                        "-c:a", "pcm_s16le", str(sidon_input)], check=True)
                     subprocess.run([sys.executable, str(Path(__file__).with_name("restore_sidon.py")),
-                                    "--input", str(source), "--output", str(restored),
+                                    "--input", str(sidon_input), "--output", str(restored),
                                     "--device", args.sidon_device], check=True)
                 processed_source = restored
                 sidon_applied = True
@@ -135,7 +150,8 @@ def prepare(args):
                                    "output_sample_rate": 48000,
                                    "sidon_applied": sidon_applied, "original_start_sec": start,
                                    "duration": actual, "mono_duplicated": channels < 2,
-                                   "swapped": review["role_order"] == "right-assistant"})
+                                   "swapped": review["role_order"] == "right-assistant",
+                                   "speaker_separation_verified": bool(review.get("human_verified", False))})
                 if not args.skip_activity:
                     dest.with_suffix(".activity.json").write_text(
                         json.dumps(activity_80ms(dest, args.energy_threshold_dbfs),
@@ -162,7 +178,8 @@ def main():
     p.add_argument("--lowrate-method", choices=["reject", "resample", "sidon"], default="sidon")
     p.add_argument("--sidon-device", default="cuda:0")
     p.add_argument("--min-sec", type=float, default=3)
-    p.add_argument("--approved-manifest", required=True, help="Explicitly reviewed stereo file allowlist")
+    p.add_argument("--approved-manifest", default=None, help="Explicitly reviewed stereo file allowlist")
+    p.add_argument("--auto-stereo", action="store_true", help="Allow any 2-channel file for exploratory pretraining; speaker identity is UNKNOWN")
     p.add_argument("--swap-channels", action="store_true", help="Deprecated; roles from approval manifest")
     p.add_argument("--mono-policy", choices=["reject", "duplicate"], default="reject")
     p.add_argument("--energy-threshold-dbfs", type=float, default=-42)
@@ -173,6 +190,8 @@ def main():
         p.error("Duration parameters must be positive.")
     if args.swap_channels:
         p.error("--swap-channels deprecated; use inspect_audio.py approve --roles right-assistant")
+    if not args.auto_stereo and not args.approved_manifest:
+        p.error("Specify --approved-manifest or --auto-stereo")
     prepare(args)
 
 if __name__ == "__main__":
