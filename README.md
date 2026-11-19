@@ -1,281 +1,113 @@
-# Multilingual Duplex Dataset Acquisition → Moshi Preprocessing
+# Multilingual Duplex Dataset Collector
 
-Dataset catalog (100 entries), conservative Hugging Face downloader, and 48 kHz stereo WAV / JSONL preparation with optional Sidon restoration. **Official Moshi/Mimi still requires a separate 24 kHz input adapter**; this project does not downsample the archived 48 kHz outputs.
+무료 공개 음성 데이터셋을 다운로드하고, **Stereo 검사 → Sidon 48kHz 복원 → GPU Whisper 단어 정렬**까지 연결하는 프로젝트입니다.
 
-> **Scope:** This repository does **not** contain acquired audio, provide a verified right to train commercially, validate all 100 source links, or perform full Moshi tokenization/training. Some catalog entries are metadata-only, paid, gated, duplicates, or unverified. `audit` checks HF availability before any download.
-
-## Environment
-
-Python 3.10+, `ffmpeg`, `ffprobe`. On Ubuntu: `sudo apt-get install ffmpeg`
+## 바로 실행하기
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-# Optional per-channel ASR (not word-aligned Moshi training JSON)
-pip install -r requirements-asr.txt
+git clone https://github.com/yoospeech/duplexget_self.git
+cd duplexget_self
+bash run.sh
 ```
 
-## Step 1 — Browse and verify the catalog
+처음 실행하면 Python 가상환경과 패키지를 준비하고, 라이선스 확인 여부를 물어본 후 작업을 진행합니다. **NVIDIA GPU(CUDA), Python 3.10+, FFmpeg가 필요합니다.** Ubuntu에서 FFmpeg가 없다면 `sudo apt-get install ffmpeg`으로 설치하세요.
 
-Open `data/catalog.html` locally. Data in `data/catalog.json` drives the CLI. The IDs are not a guarantee that a repository is valid or directly downloadable.
+### 진행 순서
+
+```text
+무료 공개 HF 데이터셋 다운로드
+            ↓
+Audio Inspection (채널·샘플레이트·길이)
+            ↓
+Stereo(정확히 2채널)만 선별
+            ↓
+48kHz 미만: Sidon GPU 복원 → 48kHz Stereo
+48kHz 이상: 48kHz Stereo 출력
+            ↓
+Whisper Timestamped (GPU, word-level)
+            ↓
+processed/free_stereo_48k/ + JSONL 메타데이터
+```
+
+### 실행 옵션
+
+| 명령 | 기능 |
+|---|---|
+| `bash run.sh` | 전체 다운로드 + 검사 + Sidon + Whisper |
+| `bash run.sh --check` | 무료 공개 후보의 접근·라이선스 메타데이터 확인 |
+| `bash run.sh --dry-run` | 실제 다운로드 전 파일 크기 미리 확인 |
+| `bash run.sh --process-existing` | 이미 `raw/`에 받은 음성 처리 |
+| `bash run.sh --lang id` | 인도네시아어 데이터셋 위주로 수집 |
+| `bash run.sh --device cuda:1` | Whisper에 GPU 1 사용 (Sidon 기본 GPU 0) |
+| `bash run.sh --skip-install` | 패키지 자동 설치 생략 |
+
+`python src/public_stats.py`를 실행하면 공개 후보 데이터의 언어별 데이터셋 수와 발표된 시간을 CSV로 확인할 수 있습니다. [데이터셋 대시보드](data/catalog.html) / [100개 카탈로그](data/catalog.json)
+
+---
+
+## 상세 설명
+
+### 1. 다운로드 범위와 이용 권한
+
+100개 후보 중 카탈로그에서 **공개**로 표시된 항목만 다운로드를 시도합니다. 공급자 유료 상품, 비공개 또는 Gated 저장소, 라이선스 메타데이터가 없는 저장소는 기본 제외됩니다. 공개 저장소라는 이유만으로 기업·상업 학습이 허용되는 것은 아닙니다. 각 원본과 포함된 음성 파일의 라이선스를 별도 검토해야 합니다.
+
+다운로드는 `raw/`에 저장하며 재실행할 수 있습니다. WAV, FLAC, MP3, 일부 ZIP/TAR/Parquet 등의 저장소 파일은 내려받을 수 있으나, **압축·Parquet 안의 음성 파일 자동 추출은 아직 구현되지 않았습니다.** 이 파일들은 추출한 후 `bash run.sh --process-existing`을 다시 사용하세요. 대규모 데이터 수집 전에 디스크 공간을 확인하세요.
+
+### 2. Stereo 및 샘플레이트 정책
+
+| 원본 Stereo 샘플레이트 | 처리 | 저장 형식 |
+|---|---|---|
+| 8 / 16 / 22.05 kHz | Sidon: 내부 16kHz 특징 추출 후 복원 | 48kHz Stereo WAV |
+| 24 / 44.1 kHz | Sidon: 내부 16kHz 특징 추출 후 복원 | 48kHz Stereo WAV |
+| 48 kHz | Stereo 유지, PCM WAV로 변환 | 48kHz Stereo WAV |
+| 96 kHz 등 48kHz 초과 | 일반 다운샘플링 | 48kHz Stereo WAV |
+| Mono 또는 3채널 이상 | 처리 대상에서 제외, 검사 기록 유지 | 없음 |
+
+Sidon은 좌우 채널을 **각각** 처리합니다. 원본 고주파 대역이 정확히 복원되는 것은 아니며, 모델이 새로운 음향 특성을 생성할 수 있습니다. 원본 파일은 `raw/`에 보존하고 복원 여부 및 원본 샘플레이트를 `provenance.jsonl`에 기록합니다.
+
+**주의:** 2채널 Stereo가 곧 두 화자의 분리 녹음이라는 뜻은 아닙니다. 이 일괄 수집 모드에서는 `speaker_separation_verified=false`로 표시합니다. 화자별 Full-Duplex 지도학습에 사용할 때는 별도 검증이 필요합니다.
+
+### 3. GPU 및 Annotation
+
+- **Sidon**: CUDA GPU 필수. 48kHz 미만 Stereo에 적용
+- **Whisper Timestamped**: CUDA GPU 필수. 내부적으로 전사 입력만 16kHz로 리샘플링
+- **FFprobe/FFmpeg**, 파일 검사·다운로드: CPU로 실행 가능 (모델 추론 아님)
+
+Whisper는 기본적으로 두 채널을 별도로 정렬합니다. 채널 0은 `<clip>.json`, 채널 1은 `<clip>.user.json`으로 저장합니다. 후자는 공식 Moshi 학습 코드에 자동 연결되지 않으며, 좌우 화자 역할도 검증되지 않은 상태입니다.
+
+원본 `annotate.py` 방식의 `alignments` 필드를 사용합니다. GPU 환경에 맞춰 CUDA 활성화된 PyTorch/Torchaudio 빌드를 설치해야 합니다. 실행 전 확인:
 
 ```bash
-python src/catalog_tool.py list --lang id
-python src/catalog_tool.py list --public-only
-python src/catalog_tool.py audit --id 4 --id 5
-# Audit all (100 API requests; may be slow / rate limited)
-python src/catalog_tool.py audit --all
-```
-
-An `audit` writes a JSONL with `accessible` / `unavailable`, HF gated status, license metadata when available, and sample media-container filenames. **Metadata correctness, source ownership, and commercial rights still require review.** Datasets may contain audio inside `.parquet`, `.zip`, `.tar` files rather than loose WAVs.
-
-## Step 2 — Dry run then download
-
-```bash
-# Explicit license acknowledgement is required; unknown license is blocked by default.
-python src/catalog_tool.py download --id 4 --acknowledge-rights --dry-run
-python src/catalog_tool.py download --id 4 --acknowledge-rights
-python src/catalog_tool.py download --id 5 --acknowledge-rights
-
-# Explicitly override for separately authorized datasets only:
-python src/catalog_tool.py download --id 7 --acknowledge-rights --include-restricted --allow-unknown-license
-```
-
-`--all` is supported, **but not advised** before verifying licenses and total size. Only Hugging Face dataset repository URLs are automatically downloaded. Others are logged and skipped. Publicly viewable repositories with no declared license are skipped unless `--allow-unknown-license`; that flag is *not* permission from the owner. Restricted data still requires valid access and license acceptance on Hugging Face. `HF_TOKEN` can be set for gated datasets after independent approval. `--all-files` downloads extra repository files.
-
-Downloads go to `raw/` and logs to `raw/download_results.jsonl`; subsequent `snapshot_download` calls are resumable through the HF cache/metadata. Audio nested in dataset containers (tar/parquet/zip) needs dataset-specific extraction before preprocessing; **never blindly extract untrusted archives**.
-
-## Step 3 — Moshi audio preparation
-
-Kyutai's official `moshi-finetune` input schema requires:
-
-* stereo audio, **left=assistant / generated audio**, **right=user / input audio**;
-* `train.jsonl`, one `{ "path": "...wav", "duration": seconds }` per clip;
-* an aligned per-clip `.json` transcription, generated using the official annotator.
-
-Place **verified separated two-channel dialogues** under `incoming/` (or any folder):
-
-```bash
-python src/inspect_audio.py scan --input incoming --out reports/audio_inspection.jsonl
-# Human review is required: listen to both channels and verify the speaker roles.
-python src/inspect_audio.py approve --file /ABS/PATH/TO/incoming/dialogue.wav \
-  --roles left-assistant --reviewed-speakers
-python src/prepare_moshi.py --input incoming --out processed/moshi --chunk-sec 100 \
-  --approved-manifest reports/approved_stereo.jsonl
-# If right channel is assistant, approve using --roles right-assistant instead.
-```
-
-This creates `processed/moshi/data_stereo/*.wav` (48 kHz 16-bit stereo), `processed/moshi/train.jsonl`, `provenance.jsonl`, optional energy-based `.activity.json` (80 ms bins), and `errors.json`.
-
-**Attention:** stereo does not automatically mean isolated speakers. If stereo is spatial room recording or podcast mix, first verify channel provenance and perform appropriate speaker separation. Mono sources are skipped by default; `--mono-policy duplicate` only tests the pipeline and does **not** reconstruct two speakers. No arbitrary output silence/padding is added. The 100-second slicing may cut turns at clip boundaries; production quality checks should account for this.
-
-## Step 4 — End-to-end download + Moshi annotation
-
-Use `download_proc.sh` to run **catalog download → 48 kHz stereo conversion → word-level alignment**.
-
-```bash
-pip install -r requirements.txt
-# ffmpeg + ffprobe required: sudo apt-get install ffmpeg
-# For CUDA, install a mutually compatible torch/torchaudio build for your CUDA first.
-
-# Check the candidate first
-python src/catalog_tool.py audit --id 4
-
-# Full pipeline for a public, independently authorized HF dataset
-bash download_proc.sh --id 4 --lang id --acknowledge-rights --inspect-only
-
-# Multiple datasets in one run
-bash download_proc.sh --id 4 --id 5 --lang id --acknowledge-rights --inspect-only
-
-# Audio already available locally (left=assistant, right=user)
-bash download_proc.sh --inspect-only --input /path/to/stereo_audio
-# Listen and approve selected stereo files before proceeding:
-python src/inspect_audio.py approve --file /absolute/path/to/separated.wav --roles left-assistant --reviewed-speakers
-bash download_proc.sh --prep-only --input /path/to/stereo_audio --lang ko
-
-# Reannotate existing processed/moshi/train.jsonl
-bash download_proc.sh --annotate-only --lang ko --whisper-model medium
-
-# Transcribe both channels: clip.json for assistant; clip.user.json sidecar for user
-bash download_proc.sh --prep-only --input /path/to/stereo_audio --lang ko --channels both
-```
-
-The `--lang` option filters catalog language during download (if supplied), and sets Whisper's transcription language. Use `--lang auto` for mixed-language local input (not a catalog filter). For data acquisition only, use `--download-only`. For a rights-gated preview without downloading files, use `--dry-run`.
-
-### About `src/annotate.py`
-
-This replaces the previous `transcribe_channels.py` preview and follows the user-provided `whisper_timestamped` approach. `src/annotate.py` accepts `train.jsonl` or `.jsonl.gz`, resamples a selected stereo channel to **16 kHz only for Whisper**, and writes each `<clip>.json` as:
-
-```json
-{"alignments": [["hello", [0.1, 0.48], "SPEAKER_MAIN"]]}
-```
-
-Default: channel 0 (assistant) only, preserving the original formatter. `--channels both` also creates `<clip>.user.json` with channel-1 alignments; the user-sidecar JSON is **not automatically consumed by upstream Moshi** and its speaker label is still `SPEAKER_MAIN`, scoped to its own channel. Verify the exact Moshi fine-tune commit's expected transcript schema before training.
-
-### Mandatory audio inspection gate
-
-No input audio is automatically accepted as speaker-separated. The `src/inspect_audio.py scan` stage records sample rate, channels, codec, duration, size, channel correlation and approximate simultaneous energy activity in `reports/audio_inspection.jsonl` and `.csv`. Only WAV/FLAC/MP3/etc directly present as files are inspected, not audio nested within TAR/ZIP/Parquet.
-
-`mono` audio is preserved for future diarization/separation. `multichannel_review` and `stereo_near_duplicate` are flagged for review. Even `stereo_review` requires listening to both channels to verify speaker isolation. No automatic heuristic certifies individual speakers or true barge-in.
-
-Once a human has verified a particular file contains speaker-separated audio, run:
-```bash
-python src/inspect_audio.py approve --file /absolute/path/to/recording.wav \
-  --roles left-assistant --reviewed-speakers
-```
-The approval file `reports/approved_stereo.jsonl` stores original absolute path, size, modification timestamp and roles. Changed files must be re-approved. `prepare_moshi.py` refuses all unapproved sources, and automatically swaps channels for entries approved with `--roles right-assistant`.
-
-If source channels are mixed, use a separate diarization/source separation process and inspect the separated result. This repository does not perform automated speaker separation.
-
-Stereo source channels must be independent speakers; if not, perform source-specific speaker separation first. Mono inputs are rejected by default. Source data inside Parquet, TAR or ZIP is **not automatically extracted**. In that case the downloader completes but preprocessing cannot start until audio has been extracted safely and its stereo channel roles confirmed. No credentials or raw audio are pushed to GitHub.
-
-This is a local-first orchestration script; it does not submit SLURM jobs or pretend commercial permission has been granted. `--all` can be extremely large and many catalog entries are restricted or unverified. Rights flags only acknowledge your own review; they do not provide a license. Some data catalog links and language/hours metadata remain unverified.
-
-## Current verification status
-
-Repository files are committed and readable through the GitHub connector. Actual large-corpus download, diarization quality and end-to-end integration have not been validated in this environment. Test locally with `python -m unittest discover -s tests` and a short manually reviewed stereo clip before large downloads.
-
-## Default Sidon restoration for stereo below 48 kHz
-
-The independent-channel `src/restore_sidon.py` adapter implements the public
-[sarulab-speech/Sidon](https://github.com/sarulab-speech/Sidon) v0.1
-[Hugging Face demo](https://huggingface.co/spaces/sarulab-speech/sidon_demo_beta/blob/main/app.py)
-recipe. It uses the single-speaker **Sidon** checkpoint (not DialogueSidon).
-Each of the two original channels is restored independently using a
-16 kHz feature model and 48 kHz decoder. The generated signals are then
-saved at 48 kHz as stereo, without additional downsampling.
-
-Sidon restoration is the **default for all verified stereo sources below 48 kHz** and is only applied to files already in the
-human-reviewed stereo allowlist. You must keep original data to audit synthetic
-bandwidth, changed timbre, channel bleed and potential time shifts. This is
-not literal reconstruction of the original missing 8–12 kHz information.
-
-```bash
-# CUDA PyTorch + matching torchaudio must be installed
-pip install -r requirements-sidon.txt
-
-# Inspect first
-bash download_proc.sh --inspect-only --input incoming
-# Manually review each file, and approve channel roles:
-python src/inspect_audio.py approve --file /ABS/PATH/incoming/recording.wav \
-  --roles left-assistant --reviewed-speakers
-
-# Approved 8 / 16 / 22.05 / 24 / 44.1 kHz stereo: Sidon -> 48 kHz -> annotate.py
-bash download_proc.sh --prep-only --input incoming --lang ko \
-  --lowrate-method sidon --sidon-device cuda:0 --device cuda:0
-
-# Alternative for low-rate data: basic resample only
-bash download_proc.sh --prep-only --input incoming --lang ko \
-  --lowrate-method resample
-
-# By default: --lowrate-method sidon (all approved stereo below 48 kHz).
-```
-
-For a standalone test:
-```bash
-python src/restore_sidon.py --input lowrate_stereo.wav \
-  --output restored_stereo_48k.wav --device cuda:0
-```
-
-Sidon checkpoint **v0.1** is marked MIT. That does not grant rights to the
-input recordings; check the licenses of dependencies, models and training
-datasets. DialogueSidon/DialogueSidon2 checkpoints are **CC BY-NC 4.0**
-and are not used here. The independent channel restoration method may alter
-speaker overlap and precise alignment. Compare against original audio
-before using restored samples for full-duplex timing supervision.
-
-**Validation:** Code uploaded but Sidon inference has not yet been exercised
-against a real checkpoint and GPU as part of this repository.
-
-## GPU-only execution policy
-
-**All model inference is GPU-only** (Sidon restoration and Whisper Timestamped annotation). There is no CPU fallback. The main pipeline checks CUDA availability before running preprocessing/annotation; each model entry point also validates its selected CUDA device. Lightweight tasks such as Hugging Face download, FFprobe inspection, manifest generation and disk I/O may still run on CPU; these are not inference models.
-
-Install a mutually compatible **CUDA-enabled** PyTorch and torchaudio build for your NVIDIA driver/CUDA runtime.
-
-```bash
-# Sanity check
 python -c "import torch; print(torch.cuda.is_available(), torch.cuda.device_count())"
-# Pick CUDA GPU (default cuda:0 for both models)
-bash download_proc.sh --prep-only --input incoming --lang ko \
-  --lowrate-method sidon --sidon-device cuda:0 --device cuda:0
-# Optional GPU 1 for Whisper / GPU 0 for Sidon
-bash download_proc.sh --prep-only --input incoming --lang ko \
-  --sidon-device cuda:0 --device cuda:1
 ```
 
-For inspection or dataset download only, no GPU is needed. Full-pipeline GPU integration remains untested here.
+### 4. 데이터 규모와 보고서
 
-## GitHub publishing
-
-Create or identify an existing GitHub repository and share its `https://github.com/OWNER/REPO` URL in ChatGPT. Upload **only code, catalog, docs and tests**; keep `raw/`, `processed/`, personal recordings, credentials, and accepted license documents private. A connected GitHub account with write access is required.
-
-## References
-
-- [Kyutai Moshi Fine-tune README](https://github.com/kyutai-labs/moshi-finetune#prepare-dataset)
-- [HF snapshot_download docs](https://huggingface.co/docs/huggingface_hub/en/package_reference/file_download)
-## Stereo sample-rate conversion policy
-
-| Original sample rate | Nyquist frequency | Default processing | 48 kHz stereo output | Notes |
-|---|---:|---|---|---|
-| 8 / 16 kHz | 4 / 8 kHz | **Sidon** (16 kHz feature input → 48 kHz vocoder) | 48 kHz | Original bandwidth is limited; generated high-frequency content is model-estimated |
-| 22.05 kHz | 11.025 kHz | **Sidon** (internal 16 kHz feature input) | 48 kHz | Source preserved separately |
-| 24 kHz | 12 kHz | **Sidon** (internal 16 kHz feature input) | 48 kHz | Model-based reconstruction; no 24 kHz output |
-| 44.1 kHz | 22.05 kHz | **Sidon** (internal 16 kHz feature input) | 48 kHz | Model resynthesis replaces original spectral detail; source preserved |
-| 48 kHz | 24 kHz | Preserve / stereo PCM conversion | 48 kHz | No sample-rate conversion necessary |
-| 96 kHz | 48 kHz | FFmpeg downsampling ×0.5 | 48 kHz | Anti-alias low-pass removes frequencies above 24 kHz |
-
-All rows assume **genuine 2-channel input**. Mono and >2-channel files are not automatically admitted. The processing stage preserves channel ordering (unless the approved channel roles explicitly request swapping) and retains the original file separately.
-
-**Optional FFmpeg-only alternative** for verified stereo audio (`--lowrate-method resample`; not the default):
+`data/catalog.json`에는 100개 수집 후보가 들어 있으며, 현재 그중 30개가 공개로 표기되어 있습니다. 실제 HF 저장소 유효성·권리·중복은 아직 모두 검증되지 않았습니다. 언어별 발표 시간은 실제 확보 시간이나 Stereo 학습 가능 시간을 의미하지 않습니다.
 
 ```bash
-# 24 kHz -> 48 kHz, with separate left/right channels
-ffmpeg -i input_24k.wav -af "pan=stereo|c0=c0|c1=c1" -ar 48000 -c:a pcm_s16le output_48k.wav
-
-# 44.1 kHz -> 48 kHz, with separate left/right channels
-ffmpeg -i input_44k.wav -af "pan=stereo|c0=c0|c1=c1" -ar 48000 -c:a pcm_s16le output_48k.wav
-```
-
-The default Sidon processing uses a 16 kHz feature representation before synthesizing 48 kHz stereo output. It may change timbre, high-frequency detail, or fine timing. Direct FFmpeg resampling remains an explicit alternative. All processed data remains **48 kHz stereo**; the Whisper annotation stage resamples transiently to 16 kHz for ASR without replacing stored audio. The stock Kyutai Mimi audio encoder expects 24 kHz, so a separate training-input adaptation is still needed.
-
-## 48 kHz retention policy (2026-11-19)
-
-All processed two-channel audio is saved at **48,000 Hz**. Sidon-generated 48 kHz waveforms are saved directly, without any 48→24 kHz reduction. All approved stereo files below 48 kHz use Sidon by default (16 kHz model features → 48 kHz output); 48 kHz files are retained and files above 48 kHz are downsampled to 48 kHz. Original recordings are preserved. The annotation script resamples transiently to 16 kHz for Whisper ASR and writes timestamps relative to the original duration; it does not replace or alter the stored 48 kHz file.
-
-**Training compatibility:** the released Kyutai Moshi/Mimi tokenizer ordinarily expects 24 kHz waveforms. The files from this pipeline are **not plug-and-play Moshi audio inputs** until a downstream training-time adapter/resampler handles 48→24 kHz, or the audio tokenizer is explicitly replaced/retrained for 48 kHz. This repository intentionally does not reduce the processed audio to 24 kHz.
-
-## Free public datasets: all-in-one processing
-
-The new `download_free.sh` runs **public catalog download → Audio Inspection → stereo-only selection → Sidon restoration (for sample rates below 48 kHz) → 48 kHz stereo WAV → GPU Whisper Timestamped alignment**.
-
-```bash
-pip install -r requirements.txt
-pip install -r requirements-sidon.txt
-sudo apt-get install -y ffmpeg
-
-# First inspect which repository links are still available and summarize language size:
 python src/public_stats.py
-bash download_free.sh --check
-
-# Preview estimated repository file sizes (not audio-hour guarantees):
-bash download_free.sh --dry-run
-
-# Execute public-only acquisition and preprocessing:
-bash download_free.sh --download --acknowledge-rights
-
-# Or process previously downloaded / extracted audio:
-bash download_free.sh --process-existing --raw-dir raw/
+bash run.sh --check
+bash run.sh --dry-run
 ```
 
-The input must be **exactly 2 channels**. Mono and >2-channel audio are excluded from processed training assets. In this exploratory *pre-training* mode, stereo is accepted even if independent speakers are not verified; `provenance.jsonl` marks `speaker_separation_verified=false`. Therefore this output is **not automatically valid Full-Duplex assistant/user supervision**. `--channels both` produces a channel-0 `.json` and channel-1 `.user.json` sidecar, without assigning ground-truth speaker identities.
+생성되는 주요 기록은 `reports/free_audio_inspection.jsonl`, `reports/public_language_stats.csv`, `raw/download_results.jsonl`, `processed/free_stereo_48k/train.jsonl`, `provenance.jsonl`입니다.
 
-Only catalog entries currently flagged `공개` are attempted. The HF preflight blocks gated/private repos and missing license metadata, while a visible free repository can still carry **non-commercial or research-only restrictions**. Purchasing/obtaining licensing rights is separate. Download archives are not automatically extracted. For compressed Parquet, ZIP or TAR, extract audio responsibly before `--process-existing`; the script will otherwise have no playable input.
+### 5. Moshi 호환성 및 제한
 
-### Public dataset coverage (catalog-level estimates)
+이 프로젝트는 사용자의 요청에 따라 **48kHz 원본·복원 음성을 24kHz로 내리지 않습니다.** 일반적인 Kyutai Moshi/Mimi 오디오 토크나이저는 24kHz 입력을 전제로 하므로, 현재 48kHz 음성은 그대로 즉시 학습에 넣을 수 없습니다. 추후 학습 입력 어댑터 또는 48kHz 지원 오디오 토크나이저가 필요합니다.
 
-`python src/public_stats.py` writes `reports/public_language_stats.csv`. It reports dataset count and separately stated **single-language published hours**; multilingual corpus-wide hours are listed separately (not allocated to each language). The metrics are *candidate annotations*, not downloaded bytes, unique audio hours or measured stereo hours. For real download bytes, use `--dry-run`; the tool records `estimated_bytes` per repository when the Hub provides file-size metadata.
+실제 다중 데이터셋 다운로드, Sidon 체크포인트 GPU 추론, Whisper 통합 테스트는 아직 완료되지 않았습니다. 처음에는 소규모 음성 데이터로 실행하여 모델 호환성, 시간 정렬, 화자 분리 문제를 확인하세요.
 
-Current `공개`-flagged catalog entries: **30 / 100**, covering seven listed language codes (en, zh, id, vi, hi, ru, th). Other corpus entries may be public after investigation, but are not automatically included until their access/licensing metadata is audited. Duplication between source and derivative sets remains possible.
+### 관련 코드
 
+- [전체 실행](run.sh) · [무료 데이터 수집 파이프라인](download_free.sh)
+- [Audio Inspection](src/inspect_audio.py) · [Sidon 복원](src/restore_sidon.py)
+- [48kHz Stereo 정리](src/prepare_moshi.py) · [Whisper Timestamped](src/annotate.py)
+- [공개 데이터 통계](src/public_stats.py)
+
+### 참고 링크
+
+- [Sidon](https://github.com/sarulab-speech/Sidon)
+- [Kyutai Moshi Fine-tuning](https://github.com/kyutai-labs/moshi-finetune)
+- [Hugging Face download API](https://huggingface.co/docs/huggingface_hub/en/package_reference/file_download)
