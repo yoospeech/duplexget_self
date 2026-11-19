@@ -116,6 +116,10 @@ def main():
                     result["reason"] = "unavailable"
                 elif (audit.get("gated") or audit.get("private")) and not args.include_restricted:
                     result["reason"] = "gated_or_private"
+                elif (audit.get("gated") or audit.get("private")) and args.include_restricted:
+                    # Gated status alone does not reveal whether the authenticated
+                    # user was approved. Attempt the download; HF enforces access.
+                    result["access_attempt"] = "authenticated_restricted"
                 elif not audit.get("license") and not args.allow_unknown_license:
                     result["reason"] = "unknown_license"
                 else:
