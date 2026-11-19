@@ -67,7 +67,12 @@ def main():
     if sr > args.max_source_rate and not args.allow_reprocess:
         parser.error(f"Source sr {sr} exceeds configured restoration ceiling")
     if not args.device.startswith("cuda") or not torch.cuda.is_available():
-        parser.error("Public Sidon v0.1 demo checkpoints were built for CUDA; use a CUDA device")
+        parser.error("Sidon inference requires a CUDA GPU; CPU fallback is disabled")
+    gpu = torch.device(args.device)
+    gpu_index = 0 if gpu.index is None else gpu.index
+    if gpu_index >= torch.cuda.device_count():
+        parser.error(f"GPU {args.device} not available (visible GPUs: {torch.cuda.device_count()})")
+    torch.cuda.set_device(gpu_index)
     model_id = "sarulab-speech/sidon-v0.1"
     fe_file = hf_hub_download(repo_id=model_id, filename="feature_extractor_cuda.pt")
     decoder_file = hf_hub_download(repo_id=model_id, filename="decoder_cuda.pt")
