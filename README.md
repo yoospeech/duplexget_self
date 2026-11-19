@@ -2,6 +2,37 @@
 
 무료 공개 음성 데이터셋을 다운로드하고, **Stereo 검사 → Sidon 48kHz 복원 → GPU Whisper 단어 정렬**까지 연결하는 프로젝트입니다.
 
+## 통합 카탈로그 실행 (현재 551개 조사 후보)
+
+```bash
+git pull origin main
+
+# 551개 목록 확인 (HF 368개 + GitHub/OpenSLR/공식 후보 183개)
+python src/catalog_tool.py list --catalog data/unified_catalog_500.json
+
+# 통합 목록에서 HF 저장소 접근·라이선스 확인 (다운로드 없음)
+bash run.sh --check --catalog data/unified_catalog_500.json --skip-install
+
+# 통합 목록에서 HF 저장소 예상 용량 확인 (다운로드 없음)
+bash run.sh --dry-run --catalog data/unified_catalog_500.json \
+  --include-restricted --skip-install
+
+# HF 공개 + 접근 승인된 Gated 저장소 실제 다운로드 및 Stereo/Sidon/Whisper 처리
+bash run.sh --catalog data/unified_catalog_500.json --include-restricted --skip-install
+
+# 오디오 파일만 검사 (GPU 사용 안 함)
+bash run.sh --inspect --raw-dir raw --skip-install
+```
+
+**범위:** 통합 목록의 GitHub·OpenSLR·공식 URL은 `not_hf`로 기록되며 HF 다운로드 단계에서는 건너뜁니다. 이 출처의 다운로드 자동화는 아직 구현되지 않았습니다. Gated 저장소는 승인된 HF 계정이 필요합니다. 라이선스 미표기 항목은 기본 제외하며, 권한을 직접 확인한 경우에만 `--allow-unknown-license`를 사용하세요. 대량 다운로드 전 반드시 `--dry-run`으로 디스크 용량을 확인하세요.
+
+**Python 명령어:** `--catalog`는 이제 `download` 앞뒤 모두 사용할 수 있습니다.
+
+```bash
+python src/catalog_tool.py download --catalog data/unified_catalog_500.json \
+  --all --include-restricted --acknowledge-rights --dry-run --out raw
+```
+
 ## 통합 500개 후보 조사 (HF + GitHub + OpenSLR + 공식 배포처)
 
 - [통합 카탈로그 JSON](data/unified_catalog_500.json) · [CSV](data/unified_catalog_500.csv)
@@ -19,7 +50,7 @@ python3 src/merge_catalogs.py --target 500
 
 # HF 후보만 메타데이터·용량 확인
 .venv/bin/python src/catalog_tool.py download \
-  --catalog data/researched_datasets_500.json --all \
+  --catalog data/unified_catalog_500.json --all \
   --include-restricted --acknowledge-rights --dry-run
 
 # 실제 내려받은 파일의 Mono/Stereo, 샘플레이트, 길이 검사
@@ -40,7 +71,7 @@ python3 src/merge_catalogs.py --target 500
 | `bash run.sh --lang id` | 카탈로그에서 인도네시아어로 표시된 공개 데이터셋만 다운로드·처리 | O | O |
 | `bash run.sh --device cuda:1` | Whisper를 GPU 1에서 실행 (Sidon은 기본 GPU 0) | O | O |
 | `bash run.sh --skip-install` | 의존성 재설치 없이 전체 실행 | O | O |
-| `bash run.sh --inspect` | *현재 미지원*: 실행 옵션으로 사용하지 마세요 | — | — |
+| `bash run.sh --inspect` | 이미 내려받은 오디오의 채널 수·샘플레이트·길이 검사 | X | X |
 
 **실행 예시**
 
