@@ -1,0 +1,1943 @@
+{
+  "metadata": {
+    "source": "GitHub repository search",
+    "total": 169,
+    "distinct": "case-insensitive repository full name",
+    "warning": "GitHub repository existence is NOT evidence of free or downloadable audio",
+    "queries": [
+      "speech dialogue dataset",
+      "conversational speech corpus",
+      "multilingual speech dataset",
+      "meeting diarization dataset",
+      "telephone conversation speech dataset",
+      "podcast diarization dataset",
+      "full duplex speech dataset",
+      "dialogue speech dataset in:name",
+      "spontaneous dialogue dataset",
+      "conversational speech dataset in:name",
+      "call center conversation dataset",
+      "meeting corpus dataset",
+      "speaker overlap dataset"
+    ]
+  },
+  "leads": [
+    {
+      "name": "03gilbe-design/claude-notebooklm-podcast-skill",
+      "github_url": "https://github.com/03gilbe-design/claude-notebooklm-podcast-skill",
+      "found_by": [
+        "podcast diarization dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "aascode/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/aascode/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Adeola80/Antenatal-Speech",
+      "github_url": "https://github.com/Adeola80/Antenatal-Speech",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Allensmile/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/Allensmile/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "andresburch/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/andresburch/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "andrespimartin/falai_dataset",
+      "github_url": "https://github.com/andrespimartin/falai_dataset",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "angeloobeta/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/angeloobeta/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "ankitshah009/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/ankitshah009/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "artemsaloev/NotebookLM-Generated-Podcasts",
+      "github_url": "https://github.com/artemsaloev/NotebookLM-Generated-Podcasts",
+      "found_by": [
+        "podcast diarization dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "atulkumar15-git/Multilingual-Hate-Speech-detection-Rag",
+      "github_url": "https://github.com/atulkumar15-git/Multilingual-Hate-Speech-detection-Rag",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "awoziji/SpiCE-Corpus",
+      "github_url": "https://github.com/awoziji/SpiCE-Corpus",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "ayozmi/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/ayozmi/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Ayushisingh2005/text-speech-bidirectional",
+      "github_url": "https://github.com/Ayushisingh2005/text-speech-bidirectional",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "bala-ceg/doctor-patient-indic-speech-dataset",
+      "github_url": "https://github.com/bala-ceg/doctor-patient-indic-speech-dataset",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "beratkurar/arabic_handwritten_textline_extraction_dataset",
+      "github_url": "https://github.com/beratkurar/arabic_handwritten_textline_extraction_dataset",
+      "found_by": [
+        "speaker overlap dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "caofeizhen/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/caofeizhen/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "cisco/multilingual-speech-testing",
+      "github_url": "https://github.com/cisco/multilingual-speech-testing",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "cyrta/awesome-full-duplex-speech-to-speech",
+      "github_url": "https://github.com/cyrta/awesome-full-duplex-speech-to-speech",
+      "found_by": [
+        "full duplex speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "research_code_or_index",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "deepeshaiml/multilingual_speech_evaluation",
+      "github_url": "https://github.com/deepeshaiml/multilingual_speech_evaluation",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "dendisuhubdy/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/dendisuhubdy/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "devRabbiz/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/devRabbiz/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "DewiBrynJones/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/DewiBrynJones/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "diarray-hub/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/diarray-hub/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "DonnieTD/411-Hours-English-Medical-Scripted-Dialogue-speech-dataset",
+      "github_url": "https://github.com/DonnieTD/411-Hours-English-Medical-Scripted-Dialogue-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "dreadlord1984/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/dreadlord1984/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "dsfsi/dsfsi-datasets",
+      "github_url": "https://github.com/dsfsi/dsfsi-datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "elviskent/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/elviskent/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "EsOff/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/EsOff/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "festvox/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/festvox/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Flux9665/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/Flux9665/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "freds0/CML-TTS-Dataset",
+      "github_url": "https://github.com/freds0/CML-TTS-Dataset",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "G-Wang/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/G-Wang/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "gedebabin/SpeakerDiarization",
+      "github_url": "https://github.com/gedebabin/SpeakerDiarization",
+      "found_by": [
+        "speaker overlap dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "gentaiscool/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/gentaiscool/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "gitcodeyeah/multilingual-speech-dataset",
+      "github_url": "https://github.com/gitcodeyeah/multilingual-speech-dataset",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "HafsatiMohammed/darija-asr-diarization-metadata",
+      "github_url": "https://github.com/HafsatiMohammed/darija-asr-diarization-metadata",
+      "found_by": [
+        "speaker overlap dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "research_code_or_index",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Hari1128/multilingual-speech-dataset",
+      "github_url": "https://github.com/Hari1128/multilingual-speech-dataset",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "hfxunlp/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/hfxunlp/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "HKUST-KnowComp/MLMA_hate_speech",
+      "github_url": "https://github.com/HKUST-KnowComp/MLMA_hate_speech",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "hlt-mt/Speech-MASSIVE",
+      "github_url": "https://github.com/hlt-mt/Speech-MASSIVE",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "hnbrh/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/hnbrh/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "HuwSwan/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/HuwSwan/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "imdarriii/ky-podcast-dataset",
+      "github_url": "https://github.com/imdarriii/ky-podcast-dataset",
+      "found_by": [
+        "podcast diarization dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "jeongukjae/multilingual-bert-korean-hate-speech",
+      "github_url": "https://github.com/jeongukjae/multilingual-bert-korean-hate-speech",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "jestillore/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/jestillore/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "jvachier/meeting-notes-extractive-corpus",
+      "github_url": "https://github.com/jvachier/meeting-notes-extractive-corpus",
+      "found_by": [
+        "meeting corpus dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Kabongosalomon/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/Kabongosalomon/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "KentKevinTDL/Sentimental-Analysis-of-Conversations",
+      "github_url": "https://github.com/KentKevinTDL/Sentimental-Analysis-of-Conversations",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "kevinva/SpiCE-Corpus",
+      "github_url": "https://github.com/kevinva/SpiCE-Corpus",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "khiajohnson/SpiCE-Corpus",
+      "github_url": "https://github.com/khiajohnson/SpiCE-Corpus",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "KhushalRathi/MELD-SENTIMENT-SPEECH-EMOTION-RECOGNITION",
+      "github_url": "https://github.com/KhushalRathi/MELD-SENTIMENT-SPEECH-EMOTION-RECOGNITION",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "krsna6/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/krsna6/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "LeanneNortje/Multilingual_speech-image_ME_dataset",
+      "github_url": "https://github.com/LeanneNortje/Multilingual_speech-image_ME_dataset",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "lee534/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/lee534/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "LennartKeller/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/LennartKeller/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "linruohan/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/linruohan/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "lynnc03/NLP5541-S26-team-may_the_corpus_be_with_you",
+      "github_url": "https://github.com/lynnc03/NLP5541-S26-team-may_the_corpus_be_with_you",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "magichub-opensource/KOREAN-SPANISH-FULL-DUPLEX-CONVERSATIONAL-SPEECH-DATASET",
+      "github_url": "https://github.com/magichub-opensource/KOREAN-SPANISH-FULL-DUPLEX-CONVERSATIONAL-SPEECH-DATASET",
+      "found_by": [
+        "full duplex speech dataset",
+        "conversational speech dataset in:name"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "MahammadRiyazShek/multilingual-nlp-dataset-processor",
+      "github_url": "https://github.com/MahammadRiyazShek/multilingual-nlp-dataset-processor",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "mapleleafss/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/mapleleafss/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "mattecammel/speaker-diarization-preprocessing",
+      "github_url": "https://github.com/mattecammel/speaker-diarization-preprocessing",
+      "found_by": [
+        "speaker overlap dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "research_code_or_index",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "mehedinaeem/lumo-speech-dataset",
+      "github_url": "https://github.com/mehedinaeem/lumo-speech-dataset",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "michen00/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/michen00/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "michen00/unified_multilingual_dataset_of_emotional_human_utterances",
+      "github_url": "https://github.com/michen00/unified_multilingual_dataset_of_emotional_human_utterances",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "miras-tech/jspeech",
+      "github_url": "https://github.com/miras-tech/jspeech",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Mormolykos/bedvibe-datasets",
+      "github_url": "https://github.com/Mormolykos/bedvibe-datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "msonderegger/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/msonderegger/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/103-Hours-Indonesian-Spontaneous-Dialogue-Smartphone-Speech-Dataset",
+      "github_url": "https://github.com/Nexdata-AI/103-Hours-Indonesian-Spontaneous-Dialogue-Smartphone-Speech-Dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/1100-Hours-Tagalog-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "github_url": "https://github.com/Nexdata-AI/1100-Hours-Tagalog-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "found_by": [
+        "full duplex speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/144-Hours-Arabic-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/144-Hours-Arabic-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/1460-Hours-Gujatati-Scripted-dialogue-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/1460-Hours-Gujatati-Scripted-dialogue-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/147-Hours-Filipino-Spontaneous-Dialogue-Telephony-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/147-Hours-Filipino-Spontaneous-Dialogue-Telephony-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/155-Hours-French-Canada-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/155-Hours-French-Canada-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/175-Hours-Thai-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/175-Hours-Thai-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/183-Hours-Urdu-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/183-Hours-Urdu-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/200-Hours-English-the-United-kingdom-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/200-Hours-English-the-United-kingdom-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/200-Hours-Japanese-Spontaneous-Dialogue-Dataset-Smartphone-Multi-Stream-Audio",
+      "github_url": "https://github.com/Nexdata-AI/200-Hours-Japanese-Spontaneous-Dialogue-Dataset-Smartphone-Multi-Stream-Audio",
+      "found_by": [
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/200-Hours-Korean-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "github_url": "https://github.com/Nexdata-AI/200-Hours-Korean-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "found_by": [
+        "full duplex speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/204-Hours-English-Philippine-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/204-Hours-English-Philippine-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/211-Hours-Thai-Full-Duplex-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/211-Hours-Thai-Full-Duplex-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "full duplex speech dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/268-Hours-Arabic-Saudi-Full-Duplex-Multi-Channel-Customer-Service-Speech-Dataset",
+      "github_url": "https://github.com/Nexdata-AI/268-Hours-Arabic-Saudi-Full-Duplex-Multi-Channel-Customer-Service-Speech-Dataset",
+      "found_by": [
+        "full duplex speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/300-Hour-Swahili-Tanzania-Speech-Dataset-Transcribed-Dialogue-Audio",
+      "github_url": "https://github.com/Nexdata-AI/300-Hour-Swahili-Tanzania-Speech-Dataset-Transcribed-Dialogue-Audio",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/300-Hours-English-India-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/300-Hours-English-India-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/339-Hours-Australia-English-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/339-Hours-Australia-English-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/352-Hours-Urdu-Full-Duplex-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/352-Hours-Urdu-Full-Duplex-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "full duplex speech dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/354-Hours-Dari-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/354-Hours-Dari-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/389-Hours-Turkish-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/389-Hours-Turkish-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/411-Hours-English-Medical-Scripted-Dialogue-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/411-Hours-English-Medical-Scripted-Dialogue-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/431-Hours-German-Germany-Spontaneous-Dialogue-Telephony-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/431-Hours-German-Germany-Spontaneous-Dialogue-Telephony-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/500-Hours-Japanese-48khz-Full-Duplex-Spontaneous-Dialogue-Microphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/500-Hours-Japanese-48khz-Full-Duplex-Spontaneous-Dialogue-Microphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "full duplex speech dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/500-Hours-Japanese-48khz-Full-Duplex-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/500-Hours-Japanese-48khz-Full-Duplex-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "full duplex speech dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/534-Hours-Taiwanese-Accent-Mandarin-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/534-Hours-Taiwanese-Accent-Mandarin-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/600-Hours-American-English-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "github_url": "https://github.com/Nexdata-AI/600-Hours-American-English-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "found_by": [
+        "full duplex speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/600-Hours-English-Philippine-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "github_url": "https://github.com/Nexdata-AI/600-Hours-English-Philippine-Full-Duplex-Multi-Channel-Speech-Dataset",
+      "found_by": [
+        "full duplex speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/621-Hours-Thai-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/621-Hours-Thai-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/760-Hours-Hindi-Conversational-Speech-Data-by-Telephone",
+      "github_url": "https://github.com/Nexdata-AI/760-Hours-Hindi-Conversational-Speech-Data-by-Telephone",
+      "found_by": [
+        "telephone conversation speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/797-Hours-Hindi-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/797-Hours-Hindi-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/99-Hours-Pashto-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/99-Hours-Pashto-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/Conversational_Speech_Dataset",
+      "github_url": "https://github.com/Nexdata-AI/Conversational_Speech_Dataset",
+      "found_by": [
+        "conversational speech dataset in:name"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/Romanian-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/Romanian-Spontaneous-Dialogue-Smartphone-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Nexdata-AI/Vietnamese-Spontaneous-Dialogue-Telephony-speech-dataset",
+      "github_url": "https://github.com/Nexdata-AI/Vietnamese-Spontaneous-Dialogue-Telephony-speech-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "dialogue speech dataset in:name",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "nieshaoshuai/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/nieshaoshuai/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Olabiyisam/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/Olabiyisam/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "olewave/OleSpeech-IV-EN-AR-100",
+      "github_url": "https://github.com/olewave/OleSpeech-IV-EN-AR-100",
+      "found_by": [
+        "speech dialogue dataset",
+        "podcast diarization dataset",
+        "full duplex speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "omarASC5/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/omarASC5/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "oserikov/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/oserikov/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "pengyizhou/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/pengyizhou/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "pengyizhou/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/pengyizhou/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "pkolachi/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/pkolachi/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "pmadhyastha/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/pmadhyastha/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "PRIYANGA-SELVAPERUMAL/Multilingual_Hate_Speech_Detection",
+      "github_url": "https://github.com/PRIYANGA-SELVAPERUMAL/Multilingual_Hate_Speech_Detection",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "priyanka-kumari26/Self-Iterative-Framework-for-Low-Resource-Multi-speaker-Speech-Recognition",
+      "github_url": "https://github.com/priyanka-kumari26/Self-Iterative-Framework-for-Low-Resource-Multi-speaker-Speech-Recognition",
+      "found_by": [
+        "speaker overlap dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "qidouhai/SpiCE-Corpus",
+      "github_url": "https://github.com/qidouhai/SpiCE-Corpus",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Qoboty/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/Qoboty/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "radilr1/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/radilr1/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "RanyaJumah/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/RanyaJumah/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "razayaseen5/multilingual-audio-alignment-dataset",
+      "github_url": "https://github.com/razayaseen5/multilingual-audio-alignment-dataset",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "rnomals/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/rnomals/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "ROAD2018/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/ROAD2018/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "ruclion/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/ruclion/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Scicom-AI-Enterprise-Organization/Multilingual-Speech-Model",
+      "github_url": "https://github.com/Scicom-AI-Enterprise-Organization/Multilingual-Speech-Model",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "research_code_or_index",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "SemouleSombre/multilingual_speech_valence_classification_datasets",
+      "github_url": "https://github.com/SemouleSombre/multilingual_speech_valence_classification_datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "shankar0206/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/shankar0206/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "sidney1994/SpiCE-Corpus",
+      "github_url": "https://github.com/sidney1994/SpiCE-Corpus",
+      "found_by": [
+        "conversational speech corpus"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "sofialtamsh/Multilingual-Speech-to-Text-Enhancement",
+      "github_url": "https://github.com/sofialtamsh/Multilingual-Speech-to-Text-Enhancement",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "soma2000-lang/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/soma2000-lang/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "ssethia2/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/ssethia2/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "sshuster/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/sshuster/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "suman101112/Hate-Speech-Detection-on-Code-Mixed-Dataset-using-a-Fusion-of-Custom-and-Pre-Trained-models-with-Pro",
+      "github_url": "https://github.com/suman101112/Hate-Speech-Detection-on-Code-Mixed-Dataset-using-a-Fusion-of-Custom-and-Pre-Trained-models-with-Pro",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "research_code_or_index",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "surafelml/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/surafelml/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "syler123/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/syler123/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "tchua/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/tchua/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "Tech-Abhang/AMI-Meeting-Stats",
+      "github_url": "https://github.com/Tech-Abhang/AMI-Meeting-Stats",
+      "found_by": [
+        "meeting corpus dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "templeblock/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/templeblock/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "thuantn210823/SpeakerDiarization",
+      "github_url": "https://github.com/thuantn210823/SpeakerDiarization",
+      "found_by": [
+        "speaker overlap dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "trx594324215/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/trx594324215/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/american-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/american-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/british-english-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/british-english-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/french-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/french-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/german-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/german-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/hindi-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/hindi-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/italian-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/italian-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/japanese-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/japanese-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/portuguese-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/portuguese-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/russian-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/russian-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-NLP/spanish-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-NLP/spanish-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/american-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/american-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/british-english-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/british-english-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/french-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/french-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/german-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/german-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/hindi-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/hindi-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/italian-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/italian-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/japanese-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/japanese-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/portuguese-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/portuguese-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/russian-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/russian-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "UniData-pro/spanish-speech-recognition-dataset",
+      "github_url": "https://github.com/UniData-pro/spanish-speech-recognition-dataset",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "likely_commercial_listing",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "wavlab-speech/SSSD",
+      "github_url": "https://github.com/wavlab-speech/SSSD",
+      "found_by": [
+        "speech dialogue dataset",
+        "spontaneous dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "weimeng23/audio-speech-datasets",
+      "github_url": "https://github.com/weimeng23/audio-speech-datasets",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "wgwangang/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/wgwangang/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "xiaoheng-zhang99/MELD-SENTIMENT-SPEECH-EMOTION-RECOGNITION",
+      "github_url": "https://github.com/xiaoheng-zhang99/MELD-SENTIMENT-SPEECH-EMOTION-RECOGNITION",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "xinjli/ucla-phonetic-corpus",
+      "github_url": "https://github.com/xinjli/ucla-phonetic-corpus",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "xrick/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/xrick/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "XrosLiang/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/XrosLiang/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "yang182/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/yang182/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "yaya-sy/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/yaya-sy/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "yh646492956/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/yh646492956/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "YingJieZhao0511/EmoDialog",
+      "github_url": "https://github.com/YingJieZhao0511/EmoDialog",
+      "found_by": [
+        "speech dialogue dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "YMLLG/SPEECHFAKE",
+      "github_url": "https://github.com/YMLLG/SPEECHFAKE",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    },
+    {
+      "name": "yt752/datasets-CMU_Wilderness",
+      "github_url": "https://github.com/yt752/datasets-CMU_Wilderness",
+      "found_by": [
+        "multilingual speech dataset"
+      ],
+      "repo_seen": "github_repository_search",
+      "audio_download_verified": false,
+      "access": "dataset_lead_unverified",
+      "note": "GitHub repository exists; dataset audio and license must be checked separately"
+    }
+  ]
+}
