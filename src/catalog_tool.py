@@ -92,13 +92,15 @@ def main():
             for row in rows:
                 result = inspect(row)
                 log.write(json.dumps(result, ensure_ascii=False) + "\n")
-                print(row["id"], result["status"], result.get("license", ""))
+                print(f"[{int(row['id']):03d}] {row['name']} ({row.get('lang', '?')}) | {result['status']} | license={result.get('license', '-')}")
         return
     if not args.acknowledge_rights:
         parser.error("Review original-source rights and pass --acknowledge-rights")
     from huggingface_hub import snapshot_download
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
+    total_estimated_bytes = 0
+    dry_run_count = 0
     with (out / "download_results.jsonl").open("a", encoding="utf-8") as log:
         for row in rows:
             rid = repo_id(row["url"])
@@ -131,6 +133,8 @@ def main():
                             result["status"] = "dry_run"
                             result["files"] = len(selected)
                             result["estimated_bytes"] = sum(known)
+                            total_estimated_bytes += sum(known)
+                            dry_run_count += 1
                             result["unknown_size_files"] = len(selected) - len(known)
                             result["note"] = "Estimated repository files, not verified audio-only size"
                         else:
@@ -151,9 +155,11 @@ def main():
                     detail += f", {missing} file sizes unknown"
             else:
                 detail = result.get("reason", result.get("destination", ""))
-            print(f"[{int(row['id']):03d}] {result['status']}: {detail}")
+            print(f"[{int(row['id']):03d}] {row['name']} ({row.get('lang', '?')}) | {result['status']}: {detail}")
             log.write(json.dumps(result, ensure_ascii=False, default=str) + "\n")
             log.flush()
+    if args.dry_run:
+        print(f"DRY-RUN TOTAL: {dry_run_count} repositories, known file sizes {total_estimated_bytes / (1024 ** 3):,.2f} GiB (may include duplicates and non-audio files)")
 
 if __name__ == "__main__":
     main()
