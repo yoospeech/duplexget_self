@@ -161,7 +161,7 @@ bash download_proc.sh --inspect-only --input incoming
 python src/inspect_audio.py approve --file /ABS/PATH/incoming/recording.wav \
   --roles left-assistant --reviewed-speakers
 
-# Approved <48 kHz stereo: Sidon -> 48 kHz -> annotate.py
+# Approved <24 kHz stereo: optional Sidon -> 48 kHz -> annotate.py
 bash download_proc.sh --prep-only --input incoming --lang ko \
   --lowrate-method sidon --sidon-device cuda:0
 
@@ -169,7 +169,7 @@ bash download_proc.sh --prep-only --input incoming --lang ko \
 bash download_proc.sh --prep-only --input incoming --lang ko \
   --lowrate-method resample
 
-# By default: --lowrate-method reject (no low-rate upsampling).
+# By default: --lowrate-method reject (sources below 24 kHz are skipped).
 ```
 
 For a standalone test:
@@ -196,6 +196,31 @@ Create or identify an existing GitHub repository and share its `https://github.c
 
 - [Kyutai Moshi Fine-tune README](https://github.com/kyutai-labs/moshi-finetune#prepare-dataset)
 - [HF snapshot_download docs](https://huggingface.co/docs/huggingface_hub/en/package_reference/file_download)
+## Stereo sample-rate conversion policy
+
+| Original sample rate | Nyquist frequency | Default processing | 48 kHz stereo output | Notes |
+|---|---:|---|---|---|
+| 8 / 16 kHz | 4 / 8 kHz | Optional **Sidon** restoration, after explicit `--lowrate-method sidon` | 48 kHz | Generated high-frequency content is model-estimated, not recovered ground truth; default `reject` |
+| 22.05 kHz | 11.025 kHz | Optional **Sidon** restoration, after explicit `--lowrate-method sidon` | 48 kHz | Default `reject`; `resample` is also possible, but adds no actual bandwidth |
+| 24 kHz | 12 kHz | **FFmpeg resampling ×2** | 48 kHz | Original information above 12 kHz is absent; Sidon is **not** applied by default |
+| 44.1 kHz | 22.05 kHz | **FFmpeg resampling ×(160/147)** | 48 kHz | Spectral information between 22.05–24 kHz is absent; ordinary resampling is preferred |
+| 48 kHz | 24 kHz | Preserve / stereo PCM conversion | 48 kHz | No sample-rate conversion necessary |
+| 96 kHz | 48 kHz | FFmpeg downsampling ×0.5 | 48 kHz | Anti-alias low-pass removes frequencies above 24 kHz |
+
+All rows assume **genuine 2-channel input**. Mono and >2-channel files are not automatically admitted. The processing stage preserves channel ordering (unless the approved channel roles explicitly request swapping) and retains the original file separately.
+
+**FFmpeg examples** for verified stereo audio:
+
+```bash
+# 24 kHz -> 48 kHz, with separate left/right channels
+ffmpeg -i input_24k.wav -af "pan=stereo|c0=c0|c1=c1" -ar 48000 -c:a pcm_s16le output_48k.wav
+
+# 44.1 kHz -> 48 kHz, with separate left/right channels
+ffmpeg -i input_44k.wav -af "pan=stereo|c0=c0|c1=c1" -ar 48000 -c:a pcm_s16le output_48k.wav
+```
+
+Resampling changes the sample grid, **not** the original high-frequency information. Sidon restores or synthesizes features and may alter timbre or fine timing. All processed data remains **48 kHz stereo**; the Whisper annotation stage resamples transiently to 16 kHz for ASR without replacing stored audio. The stock Kyutai Mimi audio encoder expects 24 kHz, so a separate training-input adaptation is still needed.
+
 ## 48 kHz retention policy (2026-11-19)
 
 All processed two-channel audio is saved at **48,000 Hz**. Sidon-generated 48 kHz waveforms are saved directly, without any 48→24 kHz reduction. Files with other rates are converted to 48 kHz in the normalization stage. Original recordings are preserved. The annotation script resamples transiently to 16 kHz for Whisper ASR and writes timestamps relative to the original duration; it does not replace or alter the stored 48 kHz file.
