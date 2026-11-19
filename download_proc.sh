@@ -15,7 +15,7 @@ WHISPER_MODEL="medium"
 DEVICE="auto"
 CHANNELS="assistant"
 CHUNK_SEC="100"
-LOWRATE_METHOD="reject"
+LOWRATE_METHOD="sidon"
 SIDON_DEVICE="cuda:0"
 DOWNLOAD_ONLY=0
 PREP_ONLY=0
@@ -47,7 +47,7 @@ Options:
                           assistant: channel 0 to clip.json (upstream style);
                           both: channel 1 additionally to clip.user.json sidecar
   --chunk-sec SEC          Segment length (default 100)
-  --lowrate-method MODE    reject (default), resample, sidon
+  --lowrate-method MODE    sidon (default), reject, resample
   --sidon-device DEVICE    CUDA device for Sidon (default cuda:0)
   --inspect-only           Download if requested, then inspect; no training prep
   --approval-manifest PATH Human-reviewed stereo allowlist (default reports/approved_stereo.jsonl)
