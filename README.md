@@ -163,7 +163,7 @@ python src/inspect_audio.py approve --file /ABS/PATH/incoming/recording.wav \
 
 # Approved 8 / 16 / 22.05 / 24 / 44.1 kHz stereo: Sidon -> 48 kHz -> annotate.py
 bash download_proc.sh --prep-only --input incoming --lang ko \
-  --lowrate-method sidon --sidon-device cuda:0
+  --lowrate-method sidon --sidon-device cuda:0 --device cuda:0
 
 # Alternative for low-rate data: basic resample only
 bash download_proc.sh --prep-only --input incoming --lang ko \
@@ -187,6 +187,25 @@ before using restored samples for full-duplex timing supervision.
 
 **Validation:** Code uploaded but Sidon inference has not yet been exercised
 against a real checkpoint and GPU as part of this repository.
+
+## GPU-only execution policy
+
+**All model inference is GPU-only** (Sidon restoration and Whisper Timestamped annotation). There is no CPU fallback. The main pipeline checks CUDA availability before running preprocessing/annotation; each model entry point also validates its selected CUDA device. Lightweight tasks such as Hugging Face download, FFprobe inspection, manifest generation and disk I/O may still run on CPU; these are not inference models.
+
+Install a mutually compatible **CUDA-enabled** PyTorch and torchaudio build for your NVIDIA driver/CUDA runtime.
+
+```bash
+# Sanity check
+python -c "import torch; print(torch.cuda.is_available(), torch.cuda.device_count())"
+# Pick CUDA GPU (default cuda:0 for both models)
+bash download_proc.sh --prep-only --input incoming --lang ko \
+  --lowrate-method sidon --sidon-device cuda:0 --device cuda:0
+# Optional GPU 1 for Whisper / GPU 0 for Sidon
+bash download_proc.sh --prep-only --input incoming --lang ko \
+  --sidon-device cuda:0 --device cuda:1
+```
+
+For inspection or dataset download only, no GPU is needed. Full-pipeline GPU integration remains untested here.
 
 ## GitHub publishing
 
