@@ -245,3 +245,37 @@ The default Sidon processing uses a 16 kHz feature representation before synthes
 All processed two-channel audio is saved at **48,000 Hz**. Sidon-generated 48 kHz waveforms are saved directly, without any 48→24 kHz reduction. All approved stereo files below 48 kHz use Sidon by default (16 kHz model features → 48 kHz output); 48 kHz files are retained and files above 48 kHz are downsampled to 48 kHz. Original recordings are preserved. The annotation script resamples transiently to 16 kHz for Whisper ASR and writes timestamps relative to the original duration; it does not replace or alter the stored 48 kHz file.
 
 **Training compatibility:** the released Kyutai Moshi/Mimi tokenizer ordinarily expects 24 kHz waveforms. The files from this pipeline are **not plug-and-play Moshi audio inputs** until a downstream training-time adapter/resampler handles 48→24 kHz, or the audio tokenizer is explicitly replaced/retrained for 48 kHz. This repository intentionally does not reduce the processed audio to 24 kHz.
+
+## Free public datasets: all-in-one processing
+
+The new `download_free.sh` runs **public catalog download → Audio Inspection → stereo-only selection → Sidon restoration (for sample rates below 48 kHz) → 48 kHz stereo WAV → GPU Whisper Timestamped alignment**.
+
+```bash
+pip install -r requirements.txt
+pip install -r requirements-sidon.txt
+sudo apt-get install -y ffmpeg
+
+# First inspect which repository links are still available and summarize language size:
+python src/public_stats.py
+bash download_free.sh --check
+
+# Preview estimated repository file sizes (not audio-hour guarantees):
+bash download_free.sh --dry-run
+
+# Execute public-only acquisition and preprocessing:
+bash download_free.sh --download --acknowledge-rights
+
+# Or process previously downloaded / extracted audio:
+bash download_free.sh --process-existing --raw-dir raw/
+```
+
+The input must be **exactly 2 channels**. Mono and >2-channel audio are excluded from processed training assets. In this exploratory *pre-training* mode, stereo is accepted even if independent speakers are not verified; `provenance.jsonl` marks `speaker_separation_verified=false`. Therefore this output is **not automatically valid Full-Duplex assistant/user supervision**. `--channels both` produces a channel-0 `.json` and channel-1 `.user.json` sidecar, without assigning ground-truth speaker identities.
+
+Only catalog entries currently flagged `공개` are attempted. The HF preflight blocks gated/private repos and missing license metadata, while a visible free repository can still carry **non-commercial or research-only restrictions**. Purchasing/obtaining licensing rights is separate. Download archives are not automatically extracted. For compressed Parquet, ZIP or TAR, extract audio responsibly before `--process-existing`; the script will otherwise have no playable input.
+
+### Public dataset coverage (catalog-level estimates)
+
+`python src/public_stats.py` writes `reports/public_language_stats.csv`. It reports dataset count and separately stated **single-language published hours**; multilingual corpus-wide hours are listed separately (not allocated to each language). The metrics are *candidate annotations*, not downloaded bytes, unique audio hours or measured stereo hours. For real download bytes, use `--dry-run`; the tool records `estimated_bytes` per repository when the Hub provides file-size metadata.
+
+Current `공개`-flagged catalog entries: **30 / 100**, covering seven listed language codes (en, zh, id, vi, hi, ru, th). Other corpus entries may be public after investigation, but are not automatically included until their access/licensing metadata is audited. Duplication between source and derivative sets remains possible.
+
