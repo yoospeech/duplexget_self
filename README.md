@@ -1,6 +1,6 @@
 # Multilingual Duplex Dataset Acquisition → Moshi Preprocessing
 
-Dataset catalog (100 entries), conservative Hugging Face downloader, and **Kyutai `moshi-finetune`-style** 24 kHz stereo WAV / JSONL preparation.
+Dataset catalog (100 entries), conservative Hugging Face downloader, and 48 kHz stereo WAV / JSONL preparation with optional Sidon restoration. **Official Moshi/Mimi still requires a separate 24 kHz input adapter**; this project does not downsample the archived 48 kHz outputs.
 
 > **Scope:** This repository does **not** contain acquired audio, provide a verified right to train commercially, validate all 100 source links, or perform full Moshi tokenization/training. Some catalog entries are metadata-only, paid, gated, duplicates, or unverified. `audit` checks HF availability before any download.
 
@@ -66,13 +66,13 @@ python src/prepare_moshi.py --input incoming --out processed/moshi --chunk-sec 1
 # If right channel is assistant, approve using --roles right-assistant instead.
 ```
 
-This creates `processed/moshi/data_stereo/*.wav` (24 kHz 16-bit stereo), `processed/moshi/train.jsonl`, `provenance.jsonl`, optional energy-based `.activity.json` (80 ms bins), and `errors.json`.
+This creates `processed/moshi/data_stereo/*.wav` (48 kHz 16-bit stereo), `processed/moshi/train.jsonl`, `provenance.jsonl`, optional energy-based `.activity.json` (80 ms bins), and `errors.json`.
 
 **Attention:** stereo does not automatically mean isolated speakers. If stereo is spatial room recording or podcast mix, first verify channel provenance and perform appropriate speaker separation. Mono sources are skipped by default; `--mono-policy duplicate` only tests the pipeline and does **not** reconstruct two speakers. No arbitrary output silence/padding is added. The 100-second slicing may cut turns at clip boundaries; production quality checks should account for this.
 
 ## Step 4 — End-to-end download + Moshi annotation
 
-Use `download_proc.sh` to run **catalog download → 24 kHz stereo conversion → word-level alignment**.
+Use `download_proc.sh` to run **catalog download → 48 kHz stereo conversion → word-level alignment**.
 
 ```bash
 pip install -r requirements.txt
@@ -144,7 +144,7 @@ The independent-channel `src/restore_sidon.py` adapter implements the public
 recipe. It uses the single-speaker **Sidon** checkpoint (not DialogueSidon).
 Each of the two original channels is restored independently using a
 16 kHz feature model and 48 kHz decoder. The generated signals are then
-downsampled to 24 kHz and saved as stereo.
+saved at 48 kHz as stereo, without additional downsampling.
 
 Low-rate behavior is **opt-in** and only applied to files already in the
 human-reviewed stereo allowlist. You must keep original data to audit synthetic
@@ -161,7 +161,7 @@ bash download_proc.sh --inspect-only --input incoming
 python src/inspect_audio.py approve --file /ABS/PATH/incoming/recording.wav \
   --roles left-assistant --reviewed-speakers
 
-# Approved <24 kHz stereo: Sidon -> 24 kHz -> annotate.py
+# Approved <48 kHz stereo: Sidon -> 48 kHz -> annotate.py
 bash download_proc.sh --prep-only --input incoming --lang ko \
   --lowrate-method sidon --sidon-device cuda:0
 
@@ -175,7 +175,7 @@ bash download_proc.sh --prep-only --input incoming --lang ko \
 For a standalone test:
 ```bash
 python src/restore_sidon.py --input lowrate_stereo.wav \
-  --output restored_stereo_24k.wav --device cuda:0
+  --output restored_stereo_48k.wav --device cuda:0
 ```
 
 Sidon checkpoint **v0.1** is marked MIT. That does not grant rights to the
@@ -196,3 +196,8 @@ Create or identify an existing GitHub repository and share its `https://github.c
 
 - [Kyutai Moshi Fine-tune README](https://github.com/kyutai-labs/moshi-finetune#prepare-dataset)
 - [HF snapshot_download docs](https://huggingface.co/docs/huggingface_hub/en/package_reference/file_download)
+## 48 kHz retention policy (2026-11-19)
+
+All processed two-channel audio is saved at **48,000 Hz**. Sidon-generated 48 kHz waveforms are saved directly, without any 48→24 kHz reduction. Files with other rates are converted to 48 kHz in the normalization stage. Original recordings are preserved. The annotation script resamples transiently to 16 kHz for Whisper ASR and writes timestamps relative to the original duration; it does not replace or alter the stored 48 kHz file.
+
+**Training compatibility:** the released Kyutai Moshi/Mimi tokenizer ordinarily expects 24 kHz waveforms. The files from this pipeline are **not plug-and-play Moshi audio inputs** until a downstream training-time adapter/resampler handles 48→24 kHz, or the audio tokenizer is explicitly replaced/retrained for 48 kHz. This repository intentionally does not reduce the processed audio to 24 kHz.
