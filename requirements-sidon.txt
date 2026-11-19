@@ -1,0 +1,5 @@
+# Optional Sidon restoration for stereo speech below 24kHz
+-r requirements.txt
+transformers>=4.56,<5
+# Use a matching CUDA PyTorch / torchaudio build for your environment.
+# Main requirements already include torch and torchaudio.
