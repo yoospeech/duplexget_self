@@ -143,7 +143,7 @@ if (( ! ANNOTATE_ONLY )); then
     echo "Then run again with --prep-only --input '$input_dir'." >&2
     exit 2
   fi
-  echo "[3/4] 24 kHz stereo Moshi preparation (approved files only)"
+  echo "[3/4] 48 kHz stereo audio preparation (approved files only)"
   pargs=(--input "$input_dir" --out "$OUT" --chunk-sec "$CHUNK_SEC" --approved-manifest "$APPROVAL"
          --lowrate-method "$LOWRATE_METHOD" --sidon-device "$SIDON_DEVICE")
   "$PYTHON" src/prepare_moshi.py "${pargs[@]}"
