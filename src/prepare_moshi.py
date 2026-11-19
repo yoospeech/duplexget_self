@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare Moshi input: 24 kHz 2-channel WAV (left assistant, right user).
+"""Prepare 48 kHz stereo audio for downstream processing; Moshi encoding needs adaptation (left assistant, right user).
 
 Stereo does not imply speaker-separated audio. Verify channel roles manually.
 Word-level aligned transcription must be produced by official Moshi annotate.py.
@@ -33,7 +33,7 @@ def ffmpeg_convert(src, dest, start, duration, swap, mono_policy):
         cmd += ["-af", "pan=stereo|c0=c1|c1=c0" if swap else "pan=stereo|c0=c0|c1=c1"]
     else:
         cmd += ["-ac", "2"]
-    cmd += ["-ar", "24000", "-c:a", "pcm_s16le", str(dest)]
+    cmd += ["-ar", "48000", "-c:a", "pcm_s16le", str(dest)]
     subprocess.run(cmd, check=True)
 
 def source_sample_rate(path):
@@ -125,13 +125,14 @@ def prepare(args):
                 if args.overwrite or not dest.exists():
                     ffmpeg_convert(processed_source, dest, start, duration, review["role_order"] == "right-assistant", "reject")
                 data, sr = sf.read(dest, dtype="float32", always_2d=True)
-                if sr != 24000 or data.shape[1] != 2:
-                    raise ValueError("failed 24 kHz stereo validation")
+                if sr != 48000 or data.shape[1] != 2:
+                    raise ValueError("failed 48 kHz stereo validation")
                 rel = dest.relative_to(out).as_posix()
                 actual = len(data) / sr
                 manifest.append({"path": rel, "duration": actual})
                 provenance.append({"path": rel, "source": str(source),
                                    "source_channels": channels, "original_sample_rate": original_sr,
+                                   "output_sample_rate": 48000,
                                    "sidon_applied": sidon_applied, "original_start_sec": start,
                                    "duration": actual, "mono_duplicated": channels < 2,
                                    "swapped": review["role_order"] == "right-assistant"})
@@ -151,7 +152,7 @@ def prepare(args):
     (out / "errors.json").write_text(
         json.dumps(errors, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Prepared {len(manifest)} clips; skipped {len(errors)} sources.")
-    print("Next: run src/annotate.py for aligned transcription.")
+    print("Next: run src/annotate.py. NOTE: official Moshi/Mimi expects 24 kHz audio; this output stays 48 kHz.")
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
