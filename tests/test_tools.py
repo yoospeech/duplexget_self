@@ -44,7 +44,7 @@ class TestTools(unittest.TestCase):
             run = subprocess.run([
                 sys.executable, str(ROOT / "src/prepare_moshi.py"),
                 "--input", str(source), "--out", str(target),
-                "--chunk-sec", "3", "--min-sec", "1", "--approved-manifest", str(approval)
+                "--chunk-sec", "3", "--min-sec", "1", "--approved-manifest", str(approval), "--lowrate-method", "resample"
             ], capture_output=True, text=True)
             self.assertEqual(run.returncode, 0, run.stderr)
             rows = [json.loads(s) for s in (target / "train.jsonl").read_text().splitlines()]
