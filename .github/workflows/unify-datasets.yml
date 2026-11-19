@@ -1,0 +1,37 @@
+name: Unify speech corpus catalog
+on:
+  push:
+    paths:
+      - 'src/merge_catalogs.py'
+      - 'data/github_research_leads.json'
+      - 'data/official_corpus_sources.json'
+      - 'data/researched_datasets_500.json'
+      - '.github/workflows/unify-datasets.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Merge research sources and preserve unverified statuses
+        run: python src/merge_catalogs.py --target 500
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unified-catalog
+          path: |
+            data/unified_catalog_500.json
+            data/unified_catalog_500.csv
+      - name: Commit merged catalog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/unified_catalog_500.json data/unified_catalog_500.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "data: rebuild multi-source unified speech catalog"
+            git push
+          fi
