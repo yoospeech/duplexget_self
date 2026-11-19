@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "timestamp_utc": "2026-11-19T06:03:47.249424+00:00",
+    "timestamp_utc": "2026-11-19T06:05:37.881669+00:00",
     "requested": 500,
-    "found": 376,
-    "searched": 2391,
-    "verified": 1500,
+    "found": 368,
+    "searched": 2844,
+    "verified": 2844,
     "warning": "CANDIDATES only. No claim of 500 actual dialogue audio datasets. Container audio, license and stereo channels need human review."
   },
   "datasets": [
@@ -3025,6 +3025,32 @@
       "id": 116
     },
     {
+      "name": "nrizwan/toxicity_begets_toxicity_conversational_chains",
+      "lang": "en",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "Direct files; validate actual speech/dialogue/channels",
+      "url": "https://huggingface.co/datasets/nrizwan/toxicity_begets_toxicity_conversational_chains",
+      "group": "A",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "mit",
+      "audio_evidence": "direct_audio",
+      "quality_tier": "A",
+      "file_count": 206,
+      "direct_audio_files": 200,
+      "container_files": 2,
+      "size_gib_known": 10.0391,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 6,
+      "needs_human_review": true,
+      "id": 117
+    },
+    {
       "name": "okadahiroaki/voicevox-diarization-ja",
       "lang": "ja",
       "hours": null,
@@ -3048,7 +3074,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 117
+      "id": 118
     },
     {
       "name": "shivamgupta/hinglish-s2s-synthetic-calls",
@@ -3074,7 +3100,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 118
+      "id": 119
     },
     {
       "name": "viai957/indic-duplex-speech-artifacts",
@@ -3100,7 +3126,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 119
+      "id": 120
     },
     {
       "name": "Ab00D/egyptian-multispeaker-tts",
@@ -3126,7 +3152,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 120
+      "id": 121
     },
     {
       "name": "anhhhhhhhhhhhhhh/speech_podcast",
@@ -3152,7 +3178,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 121
+      "id": 122
     },
     {
       "name": "AxonData/french-call-center-speech-dataset",
@@ -3178,7 +3204,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 122
+      "id": 123
     },
     {
       "name": "ayousanz/callhome-ja-plus",
@@ -3204,7 +3230,33 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 123
+      "id": 124
+    },
+    {
+      "name": "B-Lounes/conversational_audio_fr_dataset-separated",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "Direct files; validate actual speech/dialogue/channels",
+      "url": "https://huggingface.co/datasets/B-Lounes/conversational_audio_fr_dataset-separated",
+      "group": "A",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": null,
+      "audio_evidence": "direct_audio",
+      "quality_tier": "A",
+      "file_count": 129,
+      "direct_audio_files": 120,
+      "container_files": 0,
+      "size_gib_known": 5.6827,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 5,
+      "needs_human_review": true,
+      "id": 125
     },
     {
       "name": "baptistefrancois1/tool-calling-s2s-v2",
@@ -3230,7 +3282,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 124
+      "id": 126
     },
     {
       "name": "chimechallenge/chime3-background-noise",
@@ -3256,7 +3308,33 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 125
+      "id": 127
+    },
+    {
+      "name": "danielrosehill/Podcast-ASR-Evaluation",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "Direct files; validate actual speech/dialogue/channels",
+      "url": "https://huggingface.co/datasets/danielrosehill/Podcast-ASR-Evaluation",
+      "group": "A",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": null,
+      "audio_evidence": "direct_audio",
+      "quality_tier": "A",
+      "file_count": 23,
+      "direct_audio_files": 1,
+      "container_files": 0,
+      "size_gib_known": 0.0198,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 5,
+      "needs_human_review": true,
+      "id": 128
     },
     {
       "name": "mhdp-africa/speaker-diarization-dataset-ami_corpus-sula-callhome-voxconverse",
@@ -3282,7 +3360,7 @@
       "gated": "manual",
       "candidate_score": 12,
       "needs_human_review": true,
-      "id": 126
+      "id": 129
     },
     {
       "name": "Trelis/duplex-conversational-podcasts-mimi",
@@ -3308,7 +3386,7 @@
       "gated": "auto",
       "candidate_score": 12,
       "needs_human_review": true,
-      "id": 127
+      "id": 130
     },
     {
       "name": "beatsprom/realtime-conversational-voice-agent-duplex-2026",
@@ -3334,7 +3412,7 @@
       "gated": "False",
       "candidate_score": 11,
       "needs_human_review": true,
-      "id": 128
+      "id": 131
     },
     {
       "name": "ReadyAi/5000-podcast-conversations-with-metadata-and-embedding-dataset",
@@ -3360,7 +3438,7 @@
       "gated": "False",
       "candidate_score": 11,
       "needs_human_review": true,
-      "id": 129
+      "id": 132
     },
     {
       "name": "to-be/annomi-motivational-interviewing-therapy-conversations",
@@ -3386,7 +3464,7 @@
       "gated": "False",
       "candidate_score": 11,
       "needs_human_review": true,
-      "id": 130
+      "id": 133
     },
     {
       "name": "anyreach-ai/dualturn-switchboard-turn-taking",
@@ -3412,7 +3490,7 @@
       "gated": "False",
       "candidate_score": 10,
       "needs_human_review": true,
-      "id": 131
+      "id": 134
     },
     {
       "name": "BrunoHays/callhome-telephony",
@@ -3438,7 +3516,7 @@
       "gated": "False",
       "candidate_score": 10,
       "needs_human_review": true,
-      "id": 132
+      "id": 135
     },
     {
       "name": "AIxBlock/Human-to-machine-Japanese-audio-call-center-conversations",
@@ -3464,7 +3542,59 @@
       "gated": "False",
       "candidate_score": 9,
       "needs_human_review": true,
-      "id": 133
+      "id": 136
+    },
+    {
+      "name": "Bijay13/nepali-podcast-code-switch-asr-dataset",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/Bijay13/nepali-podcast-code-switch-asr-dataset",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": null,
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 8,
+      "direct_audio_files": 0,
+      "container_files": 6,
+      "size_gib_known": 1.6406,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 9,
+      "needs_human_review": true,
+      "id": 137
+    },
+    {
+      "name": "ltuncay/chime-voxconverse",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/ltuncay/chime-voxconverse",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "other",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 472,
+      "direct_audio_files": 0,
+      "container_files": 10,
+      "size_gib_known": 6.8573,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 9,
+      "needs_human_review": true,
+      "id": 138
     },
     {
       "name": "abdouaziz/spontaneous-s2st-frwo",
@@ -3490,7 +3620,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 134
+      "id": 139
     },
     {
       "name": "Akchunks/synthetic-multispeaker-diarization-dataset-hindi-test",
@@ -3516,7 +3646,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 135
+      "id": 140
     },
     {
       "name": "Akchunks/synthetic-multispeaker-diarization-dataset-hindi-train",
@@ -3542,7 +3672,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 136
+      "id": 141
     },
     {
       "name": "anyreach-ai/semantic-turn-taking-benchmark",
@@ -3568,7 +3698,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 137
+      "id": 142
     },
     {
       "name": "Beijuka/callhome-eng-diarization",
@@ -3594,7 +3724,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 138
+      "id": 143
     },
     {
       "name": "Beijuka/luganda_callhome_diarization_dataset_MHDP",
@@ -3620,7 +3750,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 139
+      "id": 144
     },
     {
       "name": "BuddheeshaI/interview-conversations",
@@ -3646,7 +3776,33 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 140
+      "id": 145
+    },
+    {
+      "name": "chiyuanhsiao/Yukuan_Podcast_Dialogue_chunk0",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/chiyuanhsiao/Yukuan_Podcast_Dialogue_chunk0",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": null,
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 5,
+      "direct_audio_files": 0,
+      "container_files": 3,
+      "size_gib_known": 0.2034,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 8,
+      "needs_human_review": true,
+      "id": 146
     },
     {
       "name": "deepakvk/conversational_dialogues_001",
@@ -3672,7 +3828,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 141
+      "id": 147
     },
     {
       "name": "deepakvk/conversational_dialogues_001_holdout",
@@ -3698,7 +3854,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 142
+      "id": 148
     },
     {
       "name": "deepakvk/conversational_dialogues_001_iteration",
@@ -3724,7 +3880,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 143
+      "id": 149
     },
     {
       "name": "herisan/mental_health_counseling_conversations",
@@ -3750,7 +3906,33 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 144
+      "id": 150
+    },
+    {
+      "name": "HoangHa/mental_health_counseling_conversations_inout",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/HoangHa/mental_health_counseling_conversations_inout",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": null,
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 4,
+      "direct_audio_files": 0,
+      "container_files": 2,
+      "size_gib_known": 0.0023,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 8,
+      "needs_human_review": true,
+      "id": 151
     },
     {
       "name": "huseinzol05/AliMeeting-mirror",
@@ -3776,7 +3958,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 145
+      "id": 152
     },
     {
       "name": "Jing1113/interview_dialog",
@@ -3802,7 +3984,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 146
+      "id": 153
     },
     {
       "name": "Jing1113/interview_dialog_single_turn",
@@ -3828,7 +4010,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 147
+      "id": 154
     },
     {
       "name": "jjookim/kodiarization_interview",
@@ -3854,7 +4036,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 148
+      "id": 155
     },
     {
       "name": "jjookim/kodiarization_interview2",
@@ -3880,7 +4062,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 149
+      "id": 156
     },
     {
       "name": "jjookim/kodiarization_interview3",
@@ -3906,7 +4088,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 150
+      "id": 157
     },
     {
       "name": "jjookim/kodiarization_interview4",
@@ -3932,7 +4114,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 151
+      "id": 158
     },
     {
       "name": "kalbin/switchboard-fisher-sft",
@@ -3958,7 +4140,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 152
+      "id": 159
     },
     {
       "name": "lokeshe09/bharat-voice-conversations",
@@ -3984,7 +4166,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 153
+      "id": 160
     },
     {
       "name": "mariia0112/diarizers-community_callhome_eng",
@@ -4010,7 +4192,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 154
+      "id": 161
     },
     {
       "name": "neyugn/synthetic-diarization-vi-meeting-4-5spk",
@@ -4036,7 +4218,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 155
+      "id": 162
     },
     {
       "name": "neyugn/synthetic-diarization-vi-meeting-5spk",
@@ -4062,7 +4244,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 156
+      "id": 163
     },
     {
       "name": "otoearth/otoSpeech-full-duplex-task-oriented-20h",
@@ -4088,7 +4270,7 @@
       "gated": "auto",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 157
+      "id": 164
     },
     {
       "name": "otoearth/otoSpeech-full-duplex-task-oriented-v2",
@@ -4114,7 +4296,7 @@
       "gated": "auto",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 158
+      "id": 165
     },
     {
       "name": "Peacockery/mozilla-common-voice-spontaneous-speech-asr-shared-task",
@@ -4140,7 +4322,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 159
+      "id": 166
     },
     {
       "name": "somu9/conversational-turn-taking-test-dataset",
@@ -4166,7 +4348,33 @@
       "gated": "manual",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 160
+      "id": 167
+    },
+    {
+      "name": "Sulav/mental_health_counseling_conversations_sharegpt",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/Sulav/mental_health_counseling_conversations_sharegpt",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": null,
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 3,
+      "direct_audio_files": 0,
+      "container_files": 1,
+      "size_gib_known": 0.0046,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 8,
+      "needs_human_review": true,
+      "id": 168
     },
     {
       "name": "Trelis/duplex-pre-training-podcasts-mimi",
@@ -4192,7 +4400,7 @@
       "gated": "auto",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 161
+      "id": 169
     },
     {
       "name": "yuekai/alimeeting_aishell4_training_whisper_fbank_lhotse",
@@ -4218,7 +4426,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 162
+      "id": 170
     },
     {
       "name": "YuKuanFu/podcast-dialogue-dataset-shar",
@@ -4244,7 +4452,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 163
+      "id": 171
     },
     {
       "name": "YuKuanFu/Podcast_Dialogue",
@@ -4270,7 +4478,7 @@
       "gated": "manual",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 164
+      "id": 172
     },
     {
       "name": "zhagaramlabs/tamil-conversational-speech",
@@ -4296,7 +4504,7 @@
       "gated": "manual",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 165
+      "id": 173
     },
     {
       "name": "1f/interactspeech",
@@ -4322,7 +4530,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 166
+      "id": 174
     },
     {
       "name": "3nesdeniz/english-daily-dialogues-10k",
@@ -4348,7 +4556,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 167
+      "id": 175
     },
     {
       "name": "ajyy/MELD_audio",
@@ -4374,7 +4582,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 168
+      "id": 176
     },
     {
       "name": "anyreach-ai/dualturn-otospeech-turn-taking",
@@ -4400,7 +4608,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 169
+      "id": 177
     },
     {
       "name": "devrahulbanjara/ne-en-codeswitching-asr-technical-interview",
@@ -4426,7 +4634,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 170
+      "id": 178
     },
     {
       "name": "diarizers-community/voxconverse",
@@ -4452,7 +4660,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 171
+      "id": 179
     },
     {
       "name": "DuplexGen/duplexgen-spoken",
@@ -4478,7 +4686,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 172
+      "id": 180
     },
     {
       "name": "eustlb/dailytalk",
@@ -4504,7 +4712,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 173
+      "id": 181
     },
     {
       "name": "giangndm/duplex-training-audio",
@@ -4530,7 +4738,7 @@
       "gated": "manual",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 174
+      "id": 182
     },
     {
       "name": "humyn-labs/Asian-High-Fidelity-ASR-Dataset",
@@ -4556,7 +4764,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 175
+      "id": 183
     },
     {
       "name": "humyn-labs/Indic-High-Fidelity-MultiSpeaker-ASR",
@@ -4582,7 +4790,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 176
+      "id": 184
     },
     {
       "name": "hysi-lab/DuplexOmni-Release",
@@ -4608,7 +4816,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 177
+      "id": 185
     },
     {
       "name": "Igor97/MISP-M3SD",
@@ -4634,7 +4842,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 178
+      "id": 186
     },
     {
       "name": "kapturecx/Vartalaap",
@@ -4660,7 +4868,7 @@
       "gated": "manual",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 179
+      "id": 187
     },
     {
       "name": "kensho/spgispeech",
@@ -4686,7 +4894,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 180
+      "id": 188
     },
     {
       "name": "LincolnD/DuplexAct",
@@ -4712,7 +4920,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 181
+      "id": 189
     },
     {
       "name": "MeghanaKap/speech-to-speech-collections",
@@ -4738,7 +4946,7 @@
       "gated": "manual",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 182
+      "id": 190
     },
     {
       "name": "mundo-ai/turn-benchmark-dev",
@@ -4764,7 +4972,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 183
+      "id": 191
     },
     {
       "name": "mundo-ai/turn-benchmark-test",
@@ -4790,7 +4998,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 184
+      "id": 192
     },
     {
       "name": "MYJOKERML/chinese-dialogue-speech-dataset",
@@ -4816,7 +5024,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 185
+      "id": 193
     },
     {
       "name": "ngocthien/EnVi-S2ST-Voice-461h",
@@ -4842,7 +5050,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 186
+      "id": 194
     },
     {
       "name": "otoearth/otoSpeech-1125-1125h",
@@ -4868,7 +5076,7 @@
       "gated": "manual",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 187
+      "id": 195
     },
     {
       "name": "otoearth/otoSpeech-full-duplex-280h",
@@ -4894,7 +5102,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 188
+      "id": 196
     },
     {
       "name": "otoearth/otoSpeech-full-duplex-processed-141h",
@@ -4920,7 +5128,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 189
+      "id": 197
     },
     {
       "name": "q1805/common_voice_spontaneous_speech_4_0_de",
@@ -4946,7 +5154,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 190
+      "id": 198
     },
     {
       "name": "qualialabsAI/DuplexConv",
@@ -4972,7 +5180,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 191
+      "id": 199
     },
     {
       "name": "shangeth/expresso",
@@ -4998,7 +5206,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 192
+      "id": 200
     },
     {
       "name": "speechcolab/gigaspeech",
@@ -5024,7 +5232,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 193
+      "id": 201
     },
     {
       "name": "speechcolab/gigaspeech2",
@@ -5050,7 +5258,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 194
+      "id": 202
     },
     {
       "name": "Trelis/duplex-pre-training-yodas3-mimi",
@@ -5076,7 +5284,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 195
+      "id": 203
     },
     {
       "name": "z050209/va-spoken-qa-agentvoice-stage2",
@@ -5102,7 +5310,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 196
+      "id": 204
     },
     {
       "name": "zetianli/FD_data_v1",
@@ -5128,7 +5336,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 197
+      "id": 205
     },
     {
       "name": "abdo1819/arabic-english-code-switching-synthetic-asr",
@@ -5154,7 +5362,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 198
+      "id": 206
     },
     {
       "name": "abuelnasr/eg_conversational_speech",
@@ -5180,7 +5388,7 @@
       "gated": "manual",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 199
+      "id": 207
     },
     {
       "name": "Aditya0619/lex-fridman-podcast",
@@ -5206,7 +5414,59 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 200
+      "id": 208
+    },
+    {
+      "name": "AudioJoe/LibriSpeech_meeting_random_gain",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/AudioJoe/LibriSpeech_meeting_random_gain",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": null,
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 10,
+      "direct_audio_files": 0,
+      "container_files": 6,
+      "size_gib_known": 13.6862,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 6,
+      "needs_human_review": true,
+      "id": 209
+    },
+    {
+      "name": "BoburAmirov/podcasts_tashkent_dialect_youtube_uzbek_speech_dataset",
+      "lang": "uz",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/BoburAmirov/podcasts_tashkent_dialect_youtube_uzbek_speech_dataset",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "apache-2.0",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 28,
+      "direct_audio_files": 0,
+      "container_files": 26,
+      "size_gib_known": 10.3457,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 6,
+      "needs_human_review": true,
+      "id": 210
     },
     {
       "name": "Botnoi/voicebot-telephony-speech",
@@ -5232,7 +5492,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 201
+      "id": 211
     },
     {
       "name": "BSC-LT/BSCs_Code_Switching_CA-ES_ASR_Test",
@@ -5258,7 +5518,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 202
+      "id": 212
     },
     {
       "name": "d0rj/dialogsum-ru",
@@ -5284,7 +5544,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 203
+      "id": 213
     },
     {
       "name": "Datoric/tts-conversational-voice-20000h",
@@ -5310,7 +5570,7 @@
       "gated": "manual",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 204
+      "id": 214
     },
     {
       "name": "doanhlt/cabin-interpreted-interviews",
@@ -5336,7 +5596,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 205
+      "id": 215
     },
     {
       "name": "emozilla/soda_synthetic_dialogue",
@@ -5362,7 +5622,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 206
+      "id": 216
     },
     {
       "name": "FlexiSLM/FlexiSLM-Data-2M-s2s-compact",
@@ -5388,7 +5648,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 207
+      "id": 217
     },
     {
       "name": "FlexiSLM/FlexiSLM-Data-4M-s2s",
@@ -5414,7 +5674,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 208
+      "id": 218
     },
     {
       "name": "ghananlpcommunity/Ghana_English-Twi_Code-switching_Speech-ipa",
@@ -5440,7 +5700,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 209
+      "id": 219
     },
     {
       "name": "giangndm/audio-en-s2s-opus",
@@ -5466,7 +5726,7 @@
       "gated": "manual",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 210
+      "id": 220
     },
     {
       "name": "google/air_dialogue",
@@ -5492,7 +5752,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 211
+      "id": 221
     },
     {
       "name": "hirotakahiraki/candor-turntaking-annotations",
@@ -5518,7 +5778,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 212
+      "id": 222
     },
     {
       "name": "islomov/podcasts_tashkent_dialect_youtube_uzbek_speech_dataset",
@@ -5544,7 +5804,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 213
+      "id": 223
     },
     {
       "name": "ivkond/synthetic-speech-diarization-ru",
@@ -5570,7 +5830,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 214
+      "id": 224
     },
     {
       "name": "jan-hq/dual_voice_instruction_speech_conversation",
@@ -5596,7 +5856,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 215
+      "id": 225
     },
     {
       "name": "jan-hq/dual_voice_instruction_speech_conversation_half_sound_only",
@@ -5622,7 +5882,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 216
+      "id": 226
     },
     {
       "name": "JonesLin/nano-duplex-data-v1",
@@ -5648,7 +5908,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 217
+      "id": 227
     },
     {
       "name": "jp1924-audio-1/MeetingSpeech",
@@ -5674,7 +5934,59 @@
       "gated": "auto",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 218
+      "id": 228
+    },
+    {
+      "name": "ltuncay/chime-audioset-audioset-strong",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/ltuncay/chime-audioset-audioset-strong",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "other",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 320,
+      "direct_audio_files": 0,
+      "container_files": 300,
+      "size_gib_known": 278.046,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 6,
+      "needs_human_review": true,
+      "id": 229
+    },
+    {
+      "name": "ltuncay/chime-audioset-strong-balanced",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/ltuncay/chime-audioset-strong-balanced",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "other",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 321,
+      "direct_audio_files": 0,
+      "container_files": 300,
+      "size_gib_known": 89.9714,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 6,
+      "needs_human_review": true,
+      "id": 230
     },
     {
       "name": "ltuncay/chime-librispeech",
@@ -5700,7 +6012,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 219
+      "id": 231
     },
     {
       "name": "ltuncay/chime-speech-commands",
@@ -5726,7 +6038,33 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 220
+      "id": 232
+    },
+    {
+      "name": "ltuncay/chime-speechocean762-child-subset",
+      "lang": "und",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/ltuncay/chime-speechocean762-child-subset",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "other",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 32,
+      "direct_audio_files": 0,
+      "container_files": 3,
+      "size_gib_known": 0.3105,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 6,
+      "needs_human_review": true,
+      "id": 233
     },
     {
       "name": "MagicLuke/duplex-qa-refusal",
@@ -5752,7 +6090,7 @@
       "gated": "manual",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 221
+      "id": 234
     },
     {
       "name": "niobures/synthetic-speech-diarization-ru",
@@ -5778,7 +6116,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 222
+      "id": 235
     },
     {
       "name": "palli23/Spjallromur-AB-Diarization-test",
@@ -5804,7 +6142,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 223
+      "id": 236
     },
     {
       "name": "themohal/saraiki-s2s-dataset",
@@ -5830,7 +6168,7 @@
       "gated": "manual",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 224
+      "id": 237
     },
     {
       "name": "thetaone-ai/Korean-Japanese-Code-Switching-Speech",
@@ -5856,7 +6194,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 225
+      "id": 238
     },
     {
       "name": "Trelis/tiron-eval-meetings",
@@ -5882,7 +6220,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 226
+      "id": 239
     },
     {
       "name": "viai957/indic-duplex-speech-mimi-tokens",
@@ -5908,7 +6246,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 227
+      "id": 240
     },
     {
       "name": "WhissleAI/MADASR2.0-Test-spontaneous-speech",
@@ -5934,7 +6272,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 228
+      "id": 241
     },
     {
       "name": "0-hero/lj_speech_with_spectogram_conversations",
@@ -5960,7 +6298,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 229
+      "id": 242
     },
     {
       "name": "abo003516/Quran_processed_tokenized_data_speech_to_speech",
@@ -5986,7 +6324,111 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 230
+      "id": 243
+    },
+    {
+      "name": "adrianf12/healthcare_conversational_messages_10k",
+      "lang": "en",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/adrianf12/healthcare_conversational_messages_10k",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "mit",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 3,
+      "direct_audio_files": 0,
+      "container_files": 1,
+      "size_gib_known": 0.0011,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 5,
+      "needs_human_review": true,
+      "id": 244
+    },
+    {
+      "name": "adrianf12/healthcare_conversational_prompt_completion_10k",
+      "lang": "en",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/adrianf12/healthcare_conversational_prompt_completion_10k",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "mit",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 3,
+      "direct_audio_files": 0,
+      "container_files": 1,
+      "size_gib_known": 0.0005,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 5,
+      "needs_human_review": true,
+      "id": 245
+    },
+    {
+      "name": "adrianf12/legal_conversational_messages_10k",
+      "lang": "en",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/adrianf12/legal_conversational_messages_10k",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "mit",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 3,
+      "direct_audio_files": 0,
+      "container_files": 1,
+      "size_gib_known": 0.0017,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 5,
+      "needs_human_review": true,
+      "id": 246
+    },
+    {
+      "name": "adrianf12/legal_conversational_prompt_completion_10k",
+      "lang": "en",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "공개",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/adrianf12/legal_conversational_prompt_completion_10k",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "mit",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 3,
+      "direct_audio_files": 0,
+      "container_files": 1,
+      "size_gib_known": 0.0014,
+      "size_unknown_files": 0,
+      "gated": "False",
+      "candidate_score": 5,
+      "needs_human_review": true,
+      "id": 247
     },
     {
       "name": "AKCIT-Audio/CHiME6_formatted_transcriptions",
@@ -6012,7 +6454,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 231
+      "id": 248
     },
     {
       "name": "alexandreacff/librispeech-synthetic-speaker-diarization-dataset",
@@ -6038,7 +6480,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 232
+      "id": 249
     },
     {
       "name": "AlioLeuchtmann/MeetingBank-transcript-de",
@@ -6064,7 +6506,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 233
+      "id": 250
     },
     {
       "name": "APEX-SUPERB/librispeech_multispeaker",
@@ -6090,7 +6532,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 234
+      "id": 251
     },
     {
       "name": "arbml/Dialectal_Speech_Code_Switching",
@@ -6116,7 +6558,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 235
+      "id": 252
     },
     {
       "name": "aspmirlab/BENYO-S2ST-Corpus-1",
@@ -6142,7 +6584,7 @@
       "gated": "auto",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 236
+      "id": 253
     },
     {
       "name": "ayousanz/callhome-ja-plus-audit",
@@ -6168,7 +6610,7 @@
       "gated": "manual",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 237
+      "id": 254
     },
     {
       "name": "BabelSpeech/50hours_Malay_Real-world_Colloquial_Conversation_and_Monologue_Speech_Dataset",
@@ -6194,7 +6636,7 @@
       "gated": "manual",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 238
+      "id": 255
     },
     {
       "name": "BelalElhossany/mgb2_audios_transcriptions_non_overlap",
@@ -6220,7 +6662,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 239
+      "id": 256
     },
     {
       "name": "BlackSamorez/2ch_b_dialogues",
@@ -6246,7 +6688,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 240
+      "id": 257
     },
     {
       "name": "BrunoHays/apollo-telephony-en",
@@ -6272,7 +6714,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 241
+      "id": 258
     },
     {
       "name": "BrunoHays/eslo-telephony-fr",
@@ -6298,7 +6740,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 242
+      "id": 259
     },
     {
       "name": "BrunoHays/minds14-telephony-cs",
@@ -6324,7 +6766,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 243
+      "id": 260
     },
     {
       "name": "BrunoHays/minds14-telephony-de",
@@ -6350,7 +6792,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 244
+      "id": 261
     },
     {
       "name": "BrunoHays/minds14-telephony-en-au",
@@ -6376,7 +6818,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 245
+      "id": 262
     },
     {
       "name": "BrunoHays/minds14-telephony-en-gb",
@@ -6402,7 +6844,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 246
+      "id": 263
     },
     {
       "name": "BrunoHays/minds14-telephony-en-us",
@@ -6428,7 +6870,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 247
+      "id": 264
     },
     {
       "name": "BrunoHays/minds14-telephony-es",
@@ -6454,7 +6896,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 248
+      "id": 265
     },
     {
       "name": "BrunoHays/minds14-telephony-fr",
@@ -6480,7 +6922,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 249
+      "id": 266
     },
     {
       "name": "BrunoHays/minds14-telephony-it",
@@ -6506,7 +6948,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 250
+      "id": 267
     },
     {
       "name": "BrunoHays/minds14-telephony-ko",
@@ -6532,7 +6974,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 251
+      "id": 268
     },
     {
       "name": "BrunoHays/minds14-telephony-nl",
@@ -6558,7 +7000,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 252
+      "id": 269
     },
     {
       "name": "BrunoHays/minds14-telephony-pl",
@@ -6584,7 +7026,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 253
+      "id": 270
     },
     {
       "name": "BrunoHays/minds14-telephony-pt",
@@ -6610,7 +7052,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 254
+      "id": 271
     },
     {
       "name": "BrunoHays/minds14-telephony-ru",
@@ -6636,7 +7078,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 255
+      "id": 272
     },
     {
       "name": "BrunoHays/minds14-telephony-zh",
@@ -6662,7 +7104,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 256
+      "id": 273
     },
     {
       "name": "BrunoHays/vystadial-telephony-cs",
@@ -6688,7 +7130,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 257
+      "id": 274
     },
     {
       "name": "BrunoHays/vystadial-telephony-en",
@@ -6714,7 +7156,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 258
+      "id": 275
     },
     {
       "name": "chaserobb09/whisper_audio_diarization_realtime_streaming_repair_teaser",
@@ -6740,7 +7182,33 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 259
+      "id": 276
+    },
+    {
+      "name": "CHiME9-ECHI/CHiME9-ECHI-eval-refs",
+      "lang": "en",
+      "hours": null,
+      "kind": "spoken-dialogue candidate",
+      "access": "신청",
+      "notes": "TAR/Parquet present, audio content not verified",
+      "url": "https://huggingface.co/datasets/CHiME9-ECHI/CHiME9-ECHI-eval-refs",
+      "group": "B",
+      "train": false,
+      "dup": "",
+      "verified": "HF repository API metadata",
+      "source": "huggingface",
+      "license": "other",
+      "audio_evidence": "container_unverified",
+      "quality_tier": "B",
+      "file_count": 4,
+      "direct_audio_files": 0,
+      "container_files": 1,
+      "size_gib_known": 4.8616,
+      "size_unknown_files": 0,
+      "gated": "manual",
+      "candidate_score": 5,
+      "needs_human_review": true,
+      "id": 277
     },
     {
       "name": "chimechallenge/chime5",
@@ -6766,7 +7234,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 260
+      "id": 278
     },
     {
       "name": "chimechallenge/chime6",
@@ -6792,7 +7260,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 261
+      "id": 279
     },
     {
       "name": "dianavdavidson/indicvoices-hinglish-spontaneous",
@@ -6818,7 +7286,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 262
+      "id": 280
     },
     {
       "name": "diarizers-community/synthetic-speaker-diarization-dataset-fa-3000",
@@ -6844,7 +7312,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 263
+      "id": 281
     },
     {
       "name": "didrikSkjelbred/podcast-FillerSentences",
@@ -6870,7 +7338,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 264
+      "id": 282
     },
     {
       "name": "DJLougen/chimera-curated-68k",
@@ -6896,7 +7364,7 @@
       "gated": "manual",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 265
+      "id": 283
     },
     {
       "name": "DynamicSuperb/MultiSpeakerDetection_LibriSpeech-TestClean",
@@ -6922,7 +7390,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 266
+      "id": 284
     },
     {
       "name": "DynamicSuperb/SuperbOODAsrSpon_CHIME6-Test",
@@ -6948,7 +7416,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 267
+      "id": 285
     },
     {
       "name": "DynamicSuperbPrivate/MultiSpeakerDetection_LibriSpeech-TestClean_TTS",
@@ -6974,7 +7442,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 268
+      "id": 286
     },
     {
       "name": "dys-asr/fisher-sr16000",
@@ -7000,7 +7468,7 @@
       "gated": "manual",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 269
+      "id": 287
     },
     {
       "name": "dys-asr/fisher-sr8000",
@@ -7026,7 +7494,7 @@
       "gated": "manual",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 270
+      "id": 288
     },
     {
       "name": "dys-asr/switchboard-sr8000",
@@ -7052,7 +7520,7 @@
       "gated": "manual",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 271
+      "id": 289
     },
     {
       "name": "electricsheepafrica/africa-mauritius-fixed-line-telephone-republic-of-mauritius-2000-to-2018-bd3c5add",
@@ -7078,7 +7546,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 272
+      "id": 290
     },
     {
       "name": "electricsheepafrica/africa-mauritius-fixed-line-telephone-republic-of-mauritius-2000-to-2018-e39a2233",
@@ -7104,33 +7572,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 273
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-fixed-line-telephone-republic-of-mauritius-2019-to-2024-2cf4f614",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-fixed-line-telephone-republic-of-mauritius-2019-to-2024-2cf4f614",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 274
+      "id": 291
     },
     {
       "name": "electricsheepafrica/africa-mauritius-fixed-line-telephone-republic-of-mauritius-2019-to-2024-ad9713ea",
@@ -7156,657 +7598,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 275
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-2f8f2fc4",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-2f8f2fc4",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-sa-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0001,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 276
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-3bfb2e89",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-3bfb2e89",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-sa-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0001,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 277
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-7257e996",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-7257e996",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-sa-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 278
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-d7fd118e",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-local-and-international-telephone-calls-for-mauritius-d7fd118e",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-sa-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0001,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 279
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-locations-of-fisheries-posts-around-mauritius-67b147a7",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-locations-of-fisheries-posts-around-mauritius-67b147a7",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-sa-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 280
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-mobile-cellular-telephone-island-of-mauritius-d4ebbb4f",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-mobile-cellular-telephone-island-of-mauritius-d4ebbb4f",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-sa-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 281
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-mobile-cellular-telephone-island-of-mauritius-dfc52130",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-mobile-cellular-telephone-island-of-mauritius-dfc52130",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-sa-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 282
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-mobile-cellular-telephone-republic-of-mauritius-2019-to-20-bf9e28b1",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-mobile-cellular-telephone-republic-of-mauritius-2019-to-20-bf9e28b1",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 283
-    },
-    {
-      "name": "electricsheepafrica/africa-mauritius-mobile-cellular-telephone-republic-of-mauritius-2019-to-20-e1d42560",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-mauritius-mobile-cellular-telephone-republic-of-mauritius-2019-to-20-e1d42560",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 284
-    },
-    {
-      "name": "electricsheepafrica/africa-owid-capture-fisheries-vs-aquaculture",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-owid-capture-fisheries-vs-aquaculture",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 285
-    },
-    {
-      "name": "electricsheepafrica/africa-owid-capture-fishery-production",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-owid-capture-fishery-production",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 286
-    },
-    {
-      "name": "electricsheepafrica/africa-owid-fixed-telephone-subscriptions-per-100-people",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-owid-fixed-telephone-subscriptions-per-100-people",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 287
-    },
-    {
-      "name": "electricsheepafrica/africa-owid-protection-of-the-rights-of-small-scale-fisheries",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-owid-protection-of-the-rights-of-small-scale-fisheries",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 288
-    },
-    {
-      "name": "electricsheepafrica/africa-owid-share-of-individuals-who-own-a-mobile-telephone-by-sex",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-owid-share-of-individuals-who-own-a-mobile-telephone-by-sex",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 289
-    },
-    {
-      "name": "electricsheepafrica/africa-synth-agriculture-fisheries-aquaculture-nigeria",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-synth-agriculture-fisheries-aquaculture-nigeria",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "other",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0049,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 290
-    },
-    {
-      "name": "electricsheepafrica/africa-unsdg-sustainable-fisheries-as-a-proportion-of-gdp-en-scp-fshgdp",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-unsdg-sustainable-fisheries-as-a-proportion-of-gdp-en-scp-fshgdp",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "other",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 291
-    },
-    {
-      "name": "electricsheepasia/asia-owid-capture-fisheries-vs-aquaculture",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepasia/asia-owid-capture-fisheries-vs-aquaculture",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
       "id": 292
-    },
-    {
-      "name": "electricsheepasia/asia-owid-capture-fishery-production",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepasia/asia-owid-capture-fishery-production",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 293
-    },
-    {
-      "name": "electricsheepasia/asia-owid-fixed-telephone-subscriptions-per-100-people",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepasia/asia-owid-fixed-telephone-subscriptions-per-100-people",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 294
-    },
-    {
-      "name": "electricsheepasia/asia-owid-protection-of-the-rights-of-small-scale-fisheries",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepasia/asia-owid-protection-of-the-rights-of-small-scale-fisheries",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 295
-    },
-    {
-      "name": "electricsheepeurope/europe-owid-capture-fisheries-vs-aquaculture",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepeurope/europe-owid-capture-fisheries-vs-aquaculture",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 296
-    },
-    {
-      "name": "electricsheepeurope/europe-owid-capture-fishery-production",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepeurope/europe-owid-capture-fishery-production",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 297
-    },
-    {
-      "name": "electricsheepeurope/europe-owid-fixed-telephone-subscriptions-per-100-people",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepeurope/europe-owid-fixed-telephone-subscriptions-per-100-people",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 298
-    },
-    {
-      "name": "electricsheepeurope/europe-owid-protection-of-the-rights-of-small-scale-fisheries",
-      "lang": "en",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/electricsheepeurope/europe-owid-protection-of-the-rights-of-small-scale-fisheries",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "cc-by-4.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 4,
-      "direct_audio_files": 0,
-      "container_files": 2,
-      "size_gib_known": 0.0,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 299
-    },
-    {
-      "name": "emgena/bilingual_voice_code_switching_phoneme_guard_teaser",
-      "lang": "en,de",
-      "hours": null,
-      "kind": "spoken-dialogue candidate",
-      "access": "공개",
-      "notes": "TAR/Parquet present, audio content not verified",
-      "url": "https://huggingface.co/datasets/emgena/bilingual_voice_code_switching_phoneme_guard_teaser",
-      "group": "B",
-      "train": false,
-      "dup": "",
-      "verified": "HF repository API metadata",
-      "source": "huggingface",
-      "license": "apache-2.0",
-      "audio_evidence": "container_unverified",
-      "quality_tier": "B",
-      "file_count": 7,
-      "direct_audio_files": 0,
-      "container_files": 1,
-      "size_gib_known": 0.0011,
-      "size_unknown_files": 0,
-      "gated": "False",
-      "candidate_score": 5,
-      "needs_human_review": true,
-      "id": 300
     },
     {
       "name": "lescribeaudio/multi-speaker-diarization-francophonie-2027",
@@ -7832,7 +7624,7 @@
       "gated": "False",
       "candidate_score": 11,
       "needs_human_review": true,
-      "id": 301
+      "id": 293
     },
     {
       "name": "MagicHub/KOREAN-SPANISH-FULL-DUPLEX-CONVERSATIONAL-SPEECH-DATASET",
@@ -7858,7 +7650,7 @@
       "gated": "False",
       "candidate_score": 11,
       "needs_human_review": true,
-      "id": 302
+      "id": 294
     },
     {
       "name": "sarulab-speech/DuplexChat",
@@ -7884,7 +7676,7 @@
       "gated": "False",
       "candidate_score": 8,
       "needs_human_review": true,
-      "id": 303
+      "id": 295
     },
     {
       "name": "CentificAIResearch/Duplex-World",
@@ -7910,7 +7702,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 304
+      "id": 296
     },
     {
       "name": "donpark/open-yap-1k-turn-annotations",
@@ -7936,7 +7728,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 305
+      "id": 297
     },
     {
       "name": "esb/datasets",
@@ -7962,7 +7754,7 @@
       "gated": "auto",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 306
+      "id": 298
     },
     {
       "name": "Fullduplex-ai/catalog",
@@ -7988,7 +7780,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 307
+      "id": 299
     },
     {
       "name": "lggvu/avcocktail-turn-taking",
@@ -8014,7 +7806,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 308
+      "id": 300
     },
     {
       "name": "OpenT2S/DuplexChat",
@@ -8040,7 +7832,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 309
+      "id": 301
     },
     {
       "name": "sherinechally/contextual-hate-speech-conversations",
@@ -8066,7 +7858,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 310
+      "id": 302
     },
     {
       "name": "SpeechDataAI/amharic-conversational-speech",
@@ -8092,7 +7884,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 311
+      "id": 303
     },
     {
       "name": "SpeechDataAI/angolan-portuguese-conversational-speech",
@@ -8118,7 +7910,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 312
+      "id": 304
     },
     {
       "name": "SpeechDataAI/bengali-conversational-speech",
@@ -8144,7 +7936,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 313
+      "id": 305
     },
     {
       "name": "SpeechDataAI/brazilian-portuguese-conversational-speech",
@@ -8170,7 +7962,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 314
+      "id": 306
     },
     {
       "name": "SpeechDataAI/bulgarian-conversational-speech",
@@ -8196,7 +7988,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 315
+      "id": 307
     },
     {
       "name": "SpeechDataAI/catalan-conversational-speech",
@@ -8222,7 +8014,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 316
+      "id": 308
     },
     {
       "name": "SpeechDataAI/croatian-conversational-speech",
@@ -8248,7 +8040,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 317
+      "id": 309
     },
     {
       "name": "SpeechDataAI/czech-conversational-speech",
@@ -8274,7 +8066,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 318
+      "id": 310
     },
     {
       "name": "SpeechDataAI/danish-conversational-speech",
@@ -8300,7 +8092,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 319
+      "id": 311
     },
     {
       "name": "SpeechDataAI/dutch-conversational-speech",
@@ -8326,7 +8118,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 320
+      "id": 312
     },
     {
       "name": "SpeechDataAI/egyptian-arabic-conversational-speech",
@@ -8352,7 +8144,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 321
+      "id": 313
     },
     {
       "name": "SpeechDataAI/european-portuguese-conversational-speech",
@@ -8378,7 +8170,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 322
+      "id": 314
     },
     {
       "name": "SpeechDataAI/european-spanish-conversational-speech",
@@ -8404,7 +8196,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 323
+      "id": 315
     },
     {
       "name": "SpeechDataAI/finnish-conversational-speech",
@@ -8430,7 +8222,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 324
+      "id": 316
     },
     {
       "name": "SpeechDataAI/french-conversational-speech",
@@ -8456,7 +8248,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 325
+      "id": 317
     },
     {
       "name": "SpeechDataAI/german-conversational-speech",
@@ -8482,7 +8274,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 326
+      "id": 318
     },
     {
       "name": "SpeechDataAI/greek-conversational-speech",
@@ -8508,7 +8300,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 327
+      "id": 319
     },
     {
       "name": "SpeechDataAI/gujarati-conversational-speech",
@@ -8534,7 +8326,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 328
+      "id": 320
     },
     {
       "name": "SpeechDataAI/gulf-arabic-conversational-speech",
@@ -8560,7 +8352,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 329
+      "id": 321
     },
     {
       "name": "SpeechDataAI/hausa-conversational-speech",
@@ -8586,7 +8378,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 330
+      "id": 322
     },
     {
       "name": "SpeechDataAI/hebrew-conversational-speech",
@@ -8612,7 +8404,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 331
+      "id": 323
     },
     {
       "name": "SpeechDataAI/hindi-conversational-speech",
@@ -8638,7 +8430,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 332
+      "id": 324
     },
     {
       "name": "SpeechDataAI/hungarian-conversational-speech",
@@ -8664,7 +8456,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 333
+      "id": 325
     },
     {
       "name": "SpeechDataAI/indonesian-conversational-speech",
@@ -8690,7 +8482,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 334
+      "id": 326
     },
     {
       "name": "SpeechDataAI/italian-conversational-speech",
@@ -8716,7 +8508,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 335
+      "id": 327
     },
     {
       "name": "SpeechDataAI/japanese-conversational-speech",
@@ -8742,7 +8534,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 336
+      "id": 328
     },
     {
       "name": "SpeechDataAI/kannada-conversational-speech",
@@ -8768,7 +8560,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 337
+      "id": 329
     },
     {
       "name": "SpeechDataAI/korean-conversational-speech",
@@ -8794,7 +8586,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 338
+      "id": 330
     },
     {
       "name": "SpeechDataAI/latin-american-spanish-conversational-speech",
@@ -8820,7 +8612,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 339
+      "id": 331
     },
     {
       "name": "SpeechDataAI/levantine-arabic-conversational-speech",
@@ -8846,7 +8638,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 340
+      "id": 332
     },
     {
       "name": "SpeechDataAI/malay-conversational-speech",
@@ -8872,7 +8664,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 341
+      "id": 333
     },
     {
       "name": "SpeechDataAI/malayalam-conversational-speech",
@@ -8898,7 +8690,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 342
+      "id": 334
     },
     {
       "name": "SpeechDataAI/marathi-conversational-speech",
@@ -8924,7 +8716,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 343
+      "id": 335
     },
     {
       "name": "SpeechDataAI/modern-standard-arabic-conversational-speech",
@@ -8950,7 +8742,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 344
+      "id": 336
     },
     {
       "name": "SpeechDataAI/moroccan-darija-conversational-speech",
@@ -8976,7 +8768,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 345
+      "id": 337
     },
     {
       "name": "SpeechDataAI/norwegian-conversational-speech",
@@ -9002,7 +8794,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 346
+      "id": 338
     },
     {
       "name": "SpeechDataAI/persian-farsi-conversational-speech",
@@ -9028,7 +8820,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 347
+      "id": 339
     },
     {
       "name": "SpeechDataAI/polish-conversational-speech",
@@ -9054,7 +8846,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 348
+      "id": 340
     },
     {
       "name": "SpeechDataAI/punjabi-conversational-speech",
@@ -9080,7 +8872,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 349
+      "id": 341
     },
     {
       "name": "SpeechDataAI/romanian-conversational-speech",
@@ -9106,7 +8898,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 350
+      "id": 342
     },
     {
       "name": "SpeechDataAI/russian-conversational-speech",
@@ -9132,7 +8924,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 351
+      "id": 343
     },
     {
       "name": "SpeechDataAI/serbian-conversational-speech",
@@ -9158,7 +8950,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 352
+      "id": 344
     },
     {
       "name": "SpeechDataAI/singapore-english-conversational-speech",
@@ -9184,7 +8976,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 353
+      "id": 345
     },
     {
       "name": "SpeechDataAI/slovak-conversational-speech",
@@ -9210,7 +9002,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 354
+      "id": 346
     },
     {
       "name": "SpeechDataAI/south-african-english-conversational-speech",
@@ -9236,7 +9028,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 355
+      "id": 347
     },
     {
       "name": "SpeechDataAI/surinamese-dutch-conversational-speech",
@@ -9262,7 +9054,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 356
+      "id": 348
     },
     {
       "name": "SpeechDataAI/swahili-conversational-speech",
@@ -9288,7 +9080,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 357
+      "id": 349
     },
     {
       "name": "SpeechDataAI/swedish-conversational-speech",
@@ -9314,7 +9106,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 358
+      "id": 350
     },
     {
       "name": "SpeechDataAI/tagalog-conversational-speech",
@@ -9340,7 +9132,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 359
+      "id": 351
     },
     {
       "name": "SpeechDataAI/taiwanese-mandarin-conversational-speech",
@@ -9366,7 +9158,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 360
+      "id": 352
     },
     {
       "name": "SpeechDataAI/tamil-conversational-speech",
@@ -9392,7 +9184,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 361
+      "id": 353
     },
     {
       "name": "SpeechDataAI/telugu-conversational-speech",
@@ -9418,7 +9210,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 362
+      "id": 354
     },
     {
       "name": "SpeechDataAI/thai-conversational-speech",
@@ -9444,7 +9236,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 363
+      "id": 355
     },
     {
       "name": "SpeechDataAI/turkish-conversational-speech",
@@ -9470,7 +9262,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 364
+      "id": 356
     },
     {
       "name": "SpeechDataAI/ukrainian-conversational-speech",
@@ -9496,7 +9288,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 365
+      "id": 357
     },
     {
       "name": "SpeechDataAI/urdu-conversational-speech",
@@ -9522,7 +9314,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 366
+      "id": 358
     },
     {
       "name": "SpeechDataAI/us-english-conversational-speech",
@@ -9548,7 +9340,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 367
+      "id": 359
     },
     {
       "name": "SpeechDataAI/vietnamese-conversational-speech",
@@ -9574,7 +9366,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 368
+      "id": 360
     },
     {
       "name": "SpeechDataAI/yoruba-conversational-speech",
@@ -9600,7 +9392,7 @@
       "gated": "False",
       "candidate_score": 7,
       "needs_human_review": true,
-      "id": 369
+      "id": 361
     },
     {
       "name": "DatoricAI/tts-conversational-voice-20000h",
@@ -9626,7 +9418,7 @@
       "gated": "manual",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 370
+      "id": 362
     },
     {
       "name": "Ethan615/taiwan-conversation-context-100-domains",
@@ -9652,7 +9444,7 @@
       "gated": "manual",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 371
+      "id": 363
     },
     {
       "name": "rustam1221/uzbek-asr-benchmark-spontaneous",
@@ -9678,7 +9470,7 @@
       "gated": "False",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 372
+      "id": 364
     },
     {
       "name": "voicesinc/duplex-model-training-whitepaper",
@@ -9704,7 +9496,7 @@
       "gated": "auto",
       "candidate_score": 6,
       "needs_human_review": true,
-      "id": 373
+      "id": 365
     },
     {
       "name": "abdo1819/arabic-english-code-switching-review-annotations",
@@ -9730,7 +9522,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 374
+      "id": 366
     },
     {
       "name": "cekura/s2s-agent-bench",
@@ -9756,7 +9548,7 @@
       "gated": "False",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 375
+      "id": 367
     },
     {
       "name": "dev-muhammad/call_center_voice_uz_1",
@@ -9782,7 +9574,7 @@
       "gated": "manual",
       "candidate_score": 5,
       "needs_human_review": true,
-      "id": 376
+      "id": 368
     }
   ]
 }
