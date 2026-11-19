@@ -52,6 +52,20 @@ def activity_80ms(path, threshold_db=-42):
         "note": "Energy heuristic, not validated VAD or speaker diarization."
     }
 
+def approved_sources(path):
+    manifest = Path(path).resolve()
+    if not manifest.is_file():
+        raise FileNotFoundError(f"Missing approved stereo manifest: {manifest}")
+    allowed = {}
+    for raw in manifest.read_text(encoding="utf-8").splitlines():
+        if not raw.strip():
+            continue
+        item = json.loads(raw)
+        if item.get("human_verified") is True:
+            allowed[Path(item["path"]).resolve()] = item
+    return allowed
+
+
 def prepare(args):
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         raise SystemExit("ffmpeg and ffprobe must be installed")
@@ -59,11 +73,23 @@ def prepare(args):
     out = Path(args.out).resolve()
     wav_dir = out / "data_stereo"
     wav_dir.mkdir(parents=True, exist_ok=True)
+    allowed = approved_sources(args.approved_manifest)
     sources = sorted(p for p in source_root.rglob("*") if p.is_file() and p.suffix.lower() in EXTS)
     manifest, provenance, errors = [], [], []
     for index, source in enumerate(sources):
         try:
+            source = source.resolve()
+            review = allowed.get(source)
+            if review is None:
+                raise ValueError("Not in human-verified stereo allowlist")
+            stat = source.stat()
+            if stat.st_size != review.get("size_bytes") or stat.st_mtime_ns != review.get("mtime_ns"):
+                raise ValueError("Source file changed since manual approval; inspect and approve again")
+            if review.get("role_order") not in ("left-assistant", "right-assistant"):
+                raise ValueError("Approved source has invalid channel roles")
             channels, total = probe(source)
+            if channels != 2:
+                raise ValueError("Approved file must remain exactly stereo")
             if channels < 2 and args.mono_policy == "reject":
                 raise ValueError("mono source skipped; two speakers cannot be recovered by duplication")
             fingerprint = hashlib.sha1(str(source.relative_to(source_root)).encode()).hexdigest()[:12]
@@ -75,7 +101,7 @@ def prepare(args):
                     break
                 dest = wav_dir / f"{index:05d}_{fingerprint}_{part:04d}.wav"
                 if args.overwrite or not dest.exists():
-                    ffmpeg_convert(source, dest, start, duration, args.swap_channels, args.mono_policy)
+                    ffmpeg_convert(source, dest, start, duration, review["role_order"] == "right-assistant", "reject")
                 data, sr = sf.read(dest, dtype="float32", always_2d=True)
                 if sr != 24000 or data.shape[1] != 2:
                     raise ValueError("failed 24 kHz stereo validation")
@@ -85,7 +111,7 @@ def prepare(args):
                 provenance.append({"path": rel, "source": str(source),
                                    "source_channels": channels, "original_start_sec": start,
                                    "duration": actual, "mono_duplicated": channels < 2,
-                                   "swapped": args.swap_channels})
+                                   "swapped": review["role_order"] == "right-assistant"})
                 if not args.skip_activity:
                     dest.with_suffix(".activity.json").write_text(
                         json.dumps(activity_80ms(dest, args.energy_threshold_dbfs),
@@ -102,7 +128,7 @@ def prepare(args):
     (out / "errors.json").write_text(
         json.dumps(errors, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Prepared {len(manifest)} clips; skipped {len(errors)} sources.")
-    print("Next: run official kyutai-labs/moshi-finetune annotate.py for aligned transcription.")
+    print("Next: run src/annotate.py for aligned transcription.")
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
@@ -110,7 +136,8 @@ def main():
     p.add_argument("--out", default="processed/moshi")
     p.add_argument("--chunk-sec", type=float, default=100)
     p.add_argument("--min-sec", type=float, default=3)
-    p.add_argument("--swap-channels", action="store_true")
+    p.add_argument("--approved-manifest", required=True, help="Explicitly reviewed stereo file allowlist")
+    p.add_argument("--swap-channels", action="store_true", help="Deprecated; roles from approval manifest")
     p.add_argument("--mono-policy", choices=["reject", "duplicate"], default="reject")
     p.add_argument("--energy-threshold-dbfs", type=float, default=-42)
     p.add_argument("--skip-activity", action="store_true")
@@ -118,6 +145,8 @@ def main():
     args = p.parse_args()
     if args.chunk_sec <= 0 or args.min_sec <= 0:
         p.error("Duration parameters must be positive.")
+    if args.swap_channels:
+        p.error("--swap-channels deprecated; use inspect_audio.py approve --roles right-assistant")
     prepare(args)
 
 if __name__ == "__main__":
