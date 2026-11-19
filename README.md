@@ -136,6 +136,58 @@ This is a local-first orchestration script; it does not submit SLURM jobs or pre
 
 Repository files are committed and readable through the GitHub connector. Actual large-corpus download, diarization quality and end-to-end integration have not been validated in this environment. Test locally with `python -m unittest discover -s tests` and a short manually reviewed stereo clip before large downloads.
 
+## Optional Sidon restoration for low-rate stereo
+
+The independent-channel `src/restore_sidon.py` adapter implements the public
+[sarulab-speech/Sidon](https://github.com/sarulab-speech/Sidon) v0.1
+[Hugging Face demo](https://huggingface.co/spaces/sarulab-speech/sidon_demo_beta/blob/main/app.py)
+recipe. It uses the single-speaker **Sidon** checkpoint (not DialogueSidon).
+Each of the two original channels is restored independently using a
+16 kHz feature model and 48 kHz decoder. The generated signals are then
+downsampled to 24 kHz and saved as stereo.
+
+Low-rate behavior is **opt-in** and only applied to files already in the
+human-reviewed stereo allowlist. You must keep original data to audit synthetic
+bandwidth, changed timbre, channel bleed and potential time shifts. This is
+not literal reconstruction of the original missing 8–12 kHz information.
+
+```bash
+# CUDA PyTorch + matching torchaudio must be installed
+pip install -r requirements-sidon.txt
+
+# Inspect first
+bash download_proc.sh --inspect-only --input incoming
+# Manually review each file, and approve channel roles:
+python src/inspect_audio.py approve --file /ABS/PATH/incoming/recording.wav \
+  --roles left-assistant --reviewed-speakers
+
+# Approved <24 kHz stereo: Sidon -> 24 kHz -> annotate.py
+bash download_proc.sh --prep-only --input incoming --lang ko \
+  --lowrate-method sidon --sidon-device cuda:0
+
+# Alternative for low-rate data: basic resample only
+bash download_proc.sh --prep-only --input incoming --lang ko \
+  --lowrate-method resample
+
+# By default: --lowrate-method reject (no low-rate upsampling).
+```
+
+For a standalone test:
+```bash
+python src/restore_sidon.py --input lowrate_stereo.wav \
+  --output restored_stereo_24k.wav --device cuda:0
+```
+
+Sidon checkpoint **v0.1** is marked MIT. That does not grant rights to the
+input recordings; check the licenses of dependencies, models and training
+datasets. DialogueSidon/DialogueSidon2 checkpoints are **CC BY-NC 4.0**
+and are not used here. The independent channel restoration method may alter
+speaker overlap and precise alignment. Compare against original audio
+before using restored samples for full-duplex timing supervision.
+
+**Validation:** Code uploaded but Sidon inference has not yet been exercised
+against a real checkpoint and GPU as part of this repository.
+
 ## GitHub publishing
 
 Create or identify an existing GitHub repository and share its `https://github.com/OWNER/REPO` URL in ChatGPT. Upload **only code, catalog, docs and tests**; keep `raw/`, `processed/`, personal recordings, credentials, and accepted license documents private. A connected GitHub account with write access is required.
