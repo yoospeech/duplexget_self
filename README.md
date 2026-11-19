@@ -66,22 +66,49 @@ This creates `processed/moshi/data_stereo/*.wav` (24 kHz 16-bit stereo), `proces
 
 **Attention:** stereo does not automatically mean isolated speakers. If stereo is spatial room recording or podcast mix, first verify channel provenance and perform appropriate speaker separation. Mono sources are skipped by default; `--mono-policy duplicate` only tests the pipeline and does **not** reconstruct two speakers. No arbitrary output silence/padding is added. The 100-second slicing may cut turns at clip boundaries; production quality checks should account for this.
 
-### Optional ASR preview
+## Step 4 — End-to-end download + Moshi annotation
+
+Use `download_proc.sh` to run **catalog download → 24 kHz stereo conversion → word-level alignment**.
 
 ```bash
-python src/transcribe_channels.py --root processed/moshi --model small --device cpu --language ko
+pip install -r requirements.txt
+# ffmpeg + ffprobe required: sudo apt-get install ffmpeg
+# For CUDA, install a mutually compatible torch/torchaudio build for your CUDA first.
+
+# Check the candidate first
+python src/catalog_tool.py audit --id 4
+
+# Full pipeline for a public, independently authorized HF dataset
+bash download_proc.sh --id 4 --lang id --acknowledge-rights
+
+# Multiple datasets in one run
+bash download_proc.sh --id 4 --id 5 --lang id --acknowledge-rights
+
+# Audio already available locally (left=assistant, right=user)
+bash download_proc.sh --prep-only --input /path/to/stereo_audio --lang ko
+
+# Reannotate existing processed/moshi/train.jsonl
+bash download_proc.sh --annotate-only --lang ko --whisper-model medium
+
+# Transcribe both channels: clip.json for assistant; clip.user.json sidecar for user
+bash download_proc.sh --prep-only --input /path/to/stereo_audio --lang ko --channels both
 ```
 
-Produces `.asr.json`, **not** the official word-aligned transcript expected by Moshi. For true training compatibility, obtain Kyutai's repository and run its documented annotator:
+The `--lang` option filters catalog language during download (if supplied), and sets Whisper's transcription language. Use `--lang auto` for mixed-language local input (not a catalog filter). For data acquisition only, use `--download-only`. For a rights-gated preview without downloading files, use `--dry-run`.
 
-```bash
-git clone https://github.com/kyutai-labs/moshi-finetune.git
-cd moshi-finetune
-# Resolve paths per checked-out commit and annotate transcript files:
-python annotate.py /ABS/PATH/TO/processed/moshi/train.jsonl
+### About `src/annotate.py`
+
+This replaces the previous `transcribe_channels.py` preview and follows the user-provided `whisper_timestamped` approach. `src/annotate.py` accepts `train.jsonl` or `.jsonl.gz`, resamples a selected stereo channel to **16 kHz only for Whisper**, and writes each `<clip>.json` as:
+
+```json
+{"alignments": [["hello", [0.1, 0.48], "SPEAKER_MAIN"]]}
 ```
 
-The aligned `.json` next to each `.wav` should be verified manually against the precise Kyutai commit. **This project prepares a training-input scaffold, not turnkey training-ready tokenized samples.** Mimi encoding and temporal/depth delay logic remain the responsibility of Moshi's training pipeline; the 80 ms RMS activity is neither VAD nor diarization or ground-truth overlap labels.
+Default: channel 0 (assistant) only, preserving the original formatter. `--channels both` also creates `<clip>.user.json` with channel-1 alignments; the user-sidecar JSON is **not automatically consumed by upstream Moshi** and its speaker label is still `SPEAKER_MAIN`, scoped to its own channel. Verify the exact Moshi fine-tune commit's expected transcript schema before training.
+
+Stereo source channels must be independent speakers; if not, perform source-specific speaker separation first. Mono inputs are rejected by default. Source data inside Parquet, TAR or ZIP is **not automatically extracted**. In that case the downloader completes but preprocessing cannot start until audio has been extracted safely and its stereo channel roles confirmed. No credentials or raw audio are pushed to GitHub.
+
+This is a local-first orchestration script; it does not submit SLURM jobs or pretend commercial permission has been granted. `--all` can be extremely large and many catalog entries are restricted or unverified. Rights flags only acknowledge your own review; they do not provide a license. Some data catalog links and language/hours metadata remain unverified.
 
 ## GitHub publishing
 
