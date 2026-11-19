@@ -9,6 +9,7 @@ import hashlib
 import json
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 import numpy as np
 import soundfile as sf
@@ -34,6 +35,13 @@ def ffmpeg_convert(src, dest, start, duration, swap, mono_policy):
         cmd += ["-ac", "2"]
     cmd += ["-ar", "24000", "-c:a", "pcm_s16le", str(dest)]
     subprocess.run(cmd, check=True)
+
+def source_sample_rate(path):
+    info = json.loads(subprocess.check_output(
+        ["ffprobe", "-v", "error", "-select_streams", "a:0",
+         "-show_entries", "stream=sample_rate", "-of", "json", str(path)], text=True))
+    return int(info["streams"][0]["sample_rate"])
+
 
 def activity_80ms(path, threshold_db=-42):
     signal, sr = sf.read(path, dtype="float32", always_2d=True)
@@ -93,6 +101,20 @@ def prepare(args):
             if channels < 2 and args.mono_policy == "reject":
                 raise ValueError("mono source skipped; two speakers cannot be recovered by duplication")
             fingerprint = hashlib.sha1(str(source.relative_to(source_root)).encode()).hexdigest()[:12]
+            original_sr = source_sample_rate(source)
+            processed_source = source
+            sidon_applied = False
+            if original_sr < 24000 and args.lowrate_method == "sidon":
+                restored = out / "sidon_restored" / f"{index:05d}_{fingerprint}.wav"
+                restored.parent.mkdir(parents=True, exist_ok=True)
+                if args.overwrite or not restored.exists():
+                    subprocess.run([sys.executable, str(Path(__file__).with_name("restore_sidon.py")),
+                                    "--input", str(source), "--output", str(restored),
+                                    "--device", args.sidon_device], check=True)
+                processed_source = restored
+                sidon_applied = True
+            elif original_sr < 24000 and args.lowrate_method == "reject":
+                raise ValueError(f"Source {original_sr} Hz <24kHz; choose --lowrate-method sidon or resample")
             part = 0
             start = 0.0
             while start < total:
@@ -101,7 +123,7 @@ def prepare(args):
                     break
                 dest = wav_dir / f"{index:05d}_{fingerprint}_{part:04d}.wav"
                 if args.overwrite or not dest.exists():
-                    ffmpeg_convert(source, dest, start, duration, review["role_order"] == "right-assistant", "reject")
+                    ffmpeg_convert(processed_source, dest, start, duration, review["role_order"] == "right-assistant", "reject")
                 data, sr = sf.read(dest, dtype="float32", always_2d=True)
                 if sr != 24000 or data.shape[1] != 2:
                     raise ValueError("failed 24 kHz stereo validation")
@@ -109,7 +131,8 @@ def prepare(args):
                 actual = len(data) / sr
                 manifest.append({"path": rel, "duration": actual})
                 provenance.append({"path": rel, "source": str(source),
-                                   "source_channels": channels, "original_start_sec": start,
+                                   "source_channels": channels, "original_sample_rate": original_sr,
+                                   "sidon_applied": sidon_applied, "original_start_sec": start,
                                    "duration": actual, "mono_duplicated": channels < 2,
                                    "swapped": review["role_order"] == "right-assistant"})
                 if not args.skip_activity:
@@ -135,6 +158,8 @@ def main():
     p.add_argument("--input", required=True)
     p.add_argument("--out", default="processed/moshi")
     p.add_argument("--chunk-sec", type=float, default=100)
+    p.add_argument("--lowrate-method", choices=["reject", "resample", "sidon"], default="reject")
+    p.add_argument("--sidon-device", default="cuda:0")
     p.add_argument("--min-sec", type=float, default=3)
     p.add_argument("--approved-manifest", required=True, help="Explicitly reviewed stereo file allowlist")
     p.add_argument("--swap-channels", action="store_true", help="Deprecated; roles from approval manifest")
