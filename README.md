@@ -2,6 +2,55 @@
 
 무료 공개 음성 데이터셋을 다운로드하고, **Stereo 검사 → Sidon 48kHz 복원 → GPU Whisper 단어 정렬**까지 연결하는 프로젝트입니다.
 
+## 옵션별 실행 방법
+
+| 실행 명령 | 동작 | 다운로드 | GPU 모델 실행 |
+|---|---|---|---|
+| `bash run.sh` | 공개 데이터 다운로드 → Audio Inspection → Stereo 선별 → Sidon(48kHz) → Whisper | O | O |
+| `bash run.sh --check` | HF 공개 데이터셋 접근 상태 및 라이선스 메타데이터 검사 | X | X |
+| `bash run.sh --dry-run` | 데이터셋별 파일 수와 예상 다운로드 용량 확인 | X | X |
+| `bash run.sh --process-existing` | `raw/`에 이미 있는 음성 파일만 검사·전처리 | X | O |
+| `bash run.sh --lang id` | 카탈로그에서 인도네시아어로 표시된 공개 데이터셋만 다운로드·처리 | O | O |
+| `bash run.sh --device cuda:1` | Whisper를 GPU 1에서 실행 (Sidon은 기본 GPU 0) | O | O |
+| `bash run.sh --skip-install` | 의존성 재설치 없이 전체 실행 | O | O |
+| `bash run.sh --inspect` | *현재 미지원*: 실행 옵션으로 사용하지 마세요 | — | — |
+
+**실행 예시**
+
+```bash
+# 처음에는 다운로드 예상 용량부터 확인
+bash run.sh --dry-run --skip-install
+
+# 실제 전체 파이프라인 실행
+bash run.sh --skip-install
+
+# 이미 받아둔 Stereo 오디오만 검사하고 처리
+bash run.sh --process-existing --skip-install
+
+# 원본 파일의 채널 수와 샘플레이트만 검사 (Sidon/Whisper 실행 안 함)
+.venv/bin/python src/inspect_audio.py scan --input raw \
+  --out reports/audio_inspection.jsonl
+
+# 다운로드된 파일 없이 HF 저장소 접근 상태만 확인
+bash run.sh --check --skip-install
+
+# 언어별 공개 데이터셋 후보 규모
+.venv/bin/python src/public_stats.py
+```
+
+**중요:** `run.sh`는 현재 기본적으로 공개로 표시된 HF 후보만 다운로드합니다. 승인된 Gated 데이터를 포함해 전체 HF 후보를 확인하려면 아래 별도 명령을 사용하세요. 접근 승인·라이선스 조건을 직접 확인해야 합니다.
+
+```bash
+.venv/bin/python src/catalog_tool.py download --all \
+  --include-restricted --acknowledge-rights --dry-run
+
+# 승인된 저장소 전체 다운로드 (저장 용량 주의)
+.venv/bin/python src/catalog_tool.py download --all \
+  --include-restricted --acknowledge-rights --out raw/
+```
+
+TAR/ZIP/Parquet 내부 음성 자동 추출은 아직 지원되지 않습니다. 검사 결과에서 Stereo 여부가 확인되기 전까지는 Full-Duplex 학습용으로 확정하지 않습니다.
+
 ## 바로 실행하기
 
 ```bash
